@@ -7,10 +7,10 @@
 ### Requirements
 
 The website requires a connection to a database with a front-end GUI for user access. The website has the following requirements:
-Connect to a MySQL database
+1. Connect to a MySQL database
 a.	Handle roughly 2300 movie records.
 b.	Generate SQL queries.
-Search Form
+2. Search Form
 a.	Title
 b.	Genre
 c.	Year
