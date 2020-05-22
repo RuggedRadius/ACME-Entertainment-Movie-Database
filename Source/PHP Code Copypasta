@@ -1,0 +1,23 @@
+/**
+ * Short description for file
+ *
+ * PHP version 5
+ *
+ * @category BenFlix
+ * @package  BenFlix
+ * @author   Ben Royans <ben.royans@gmail.com>
+ * @license  http://www.php.net/license/3_01.txt  PHP License 3.01
+ * @link     http://pear.php.net/package/PackageName
+ */
+ 
+ 
+
+
+ 
+ /**
+ * A method to ouput data from a parsed mysqli query.
+ *
+ * @param string $qry the query
+ *
+ * @return null no return
+ */
