@@ -79,7 +79,7 @@ function outputHorizGenre($chartTitle, $_query)
     }
 
     imagepng($image, "outputimage.png");
-    echo "<br/><img src='outputimage.png'>";
+    echo "<br/><img class='chart-output-img' width='100%' src='outputimage.png'>";
     imagedestroy($image);
 
     echo "</div>";
@@ -153,7 +153,7 @@ function outputHorizGenresChart($chartTitle, $_query)
     }
 
     imagepng($image, "outputimage.png");
-    echo "<br/><img src='outputimage.png'>";
+    echo "<br/><img class='chart-output-img' width='100%' src='outputimage.png'>";
     imagedestroy($image);
 
     echo "</div>";

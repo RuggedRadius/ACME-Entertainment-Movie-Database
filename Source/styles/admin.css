@@ -1,0 +1,49 @@
+#table-admin
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -35vh);
+
+    width: 100%;
+
+    color: white;
+    font-size: 1.5rem;
+    /* border: 1px solid white; */
+
+    /* margin-left: 50px; */
+}
+
+#table-admin tr
+{
+    border: 1px solid white;
+}
+
+#table-admin tr:hover
+{
+    background: black;
+    color: red;
+    fill: red;
+}
+
+#table-admin th
+{
+    position: -webkit-sticky;
+    position: sticky;
+    background: linear-gradient(transparent, black, transparent);
+    color: #a01215;
+    font-size: 2rem;
+}
+
+#table-admin td{
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 0px 20px;
+    font-size: 1rem;
+}
+
+#page-wrapper-admin
+{
+    overflow: hidden;
+    width: 95vw;
+}

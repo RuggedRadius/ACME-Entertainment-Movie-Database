@@ -6,20 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie</title>
 
-    <!-- Stylesheets -->
-    <link href="./styles/styles.css" rel="stylesheet">
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+    <?php
+    require "./php/html_head.php";
+    ?>
 </head>
 
 <body>
-<script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
+
 <script type="text/javascript" src="./js/notification.js"></script>
 
 <?php
@@ -43,15 +36,13 @@ require "./php/fetch.php";
 $movieID = $_GET["id"];
 
 // Check for delete action
-$checkDeleteStatus = $_GET["delete"];
-if ($checkDeleteStatus == "true") {
+if (isset($_GET["delete"])) {
     $query = "DELETE FROM `moviesdb` WHERE `ID`='".$movieID."' LIMIT 1";
     $result = mysqli_query($dbConnection, $query);
     echo '<script type="text/javascript">notify("Movie deleted", 2000, "admin.php");</script>';
 }
 // Check from download information action
-$checkDownload = $_GET["download"];
-if ($checkDownload == "true") {
+if (isset($_GET["download"])) {
     // Get title of movie
     $query = "SELECT * FROM `moviesdb` WHERE `id`='".$movieID."' LIMIT 1";
         
@@ -99,28 +90,19 @@ if ($checkDownload == "true") {
     }
 }
 
-// Edit buttons
-echo "
-<div id='edit-btns'>
-<div class='btn-edit'>
-<a href='./movie.php?id=" . $movieID . "&download=true' id='auto-update'><i class='fa fa-download'></i></a>
-</div>
-<div class='btn-edit'>
-<a href='./modifyMovie.php?id=" . $movieID . "'><i class='fa fa-edit'></i></a>
-</div>
-<div class='btn-edit'>
-<a href='./movie.php?id=" . $movieID . "&download=true&auto=true'><i class='fa fa-forward'></i></a>
-</div>
-<div class='btn-edit'>
-<a href='./movie.php?id=" . $movieID . "&delete=true'><i class='fa fa-trash'></i></a>
-</div>
-</div>";
+
 
 $query = "SELECT * FROM `moviesdb` WHERE `id`="  .$movieID;
 outputMovieDetails($query);
 ?>
 
 <!-- Javascript -->
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
 <script type="text/javascript" src="./js/fetchImageSingle.js"></script>
+<script type="text/javascript" src="./js/nav.js"></script>
+
 </body>
 </html>

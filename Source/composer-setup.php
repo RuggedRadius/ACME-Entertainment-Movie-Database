@@ -1419,7 +1419,7 @@ class HttpClient
      *
      * @param  string $url URL the context is to be used for
      * @return resource Default context
-     * @throws \RuntimeException if https proxy required and OpenSSL uninstalled
+     * @throws RuntimeException if https proxy required and OpenSSL uninstalled
      */
     protected function getMergedStreamContext($url)
     {

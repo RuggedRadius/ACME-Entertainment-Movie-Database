@@ -27,45 +27,8 @@ function outputMovieDetails($qry)
     $result = mysqli_query($dbConnection, $qry);
 
     // Display movie boxes
-    while ($row = $result->fetch_assoc()) {
-        // Output movie box display
-        
-        // Background and Filter
-        echo "<div id='bg-img'>";
-        echo "</div>";
-        echo "<div id='bg-filter'>";
-        echo "</div>";
-        
-        // Panel Filter
-        echo "<div id='movie-details-filter'></div>";
-        echo "<div class='movie-details' id='".$row["Title"]."'>";
-
-        // Poster Element
-        echo "<div id='movie-img-left'>";
-        // Poster
-        echo "<image class='movie-poster' src='' width='200px'></image>";
-
-        // YouTube Trailer
-        if (!$atTafe == 1) {
-            // Get query for youtube
-            $ytQuery = $row["Title"]." movie trailer";
-            $queryFormatted = str_replace(" ", "+", $ytQuery);
-            
-            // Download html of query
-            $html = "";
-            $html = file_get_contents("https://www.youtube.com/results?search_query=".$queryFormatted);
-            $urlStartIndex = strpos($html, "/watch?v=");
-            $ytCode = substr($html, $urlStartIndex + 9, 11);
-            $videoURL = "https://www.youtube.com/embed/".$ytCode;
-
-            echo '<br><iframe src="'.$videoURL.'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'; // https://www.youtube.com/embed/'.$ytCode.'?autoplay=1"
-        }
-
-        echo "</div>";
-
-        // Details Element
-        echo "<div id='movie-details-right'>";
-        echo "<h1>".$row["Title"]."</h1>";
+    while ($row = $result->fetch_assoc())
+    {
 
         // Update rating
         if (isset($_GET["rated"])) {
@@ -79,6 +42,72 @@ function outputMovieDetails($qry)
             }
         }
 
+        // Handle Add/Remove actions
+        if (isset($_GET["add"])) {
+            $addStatus = $_GET["add"];
+            switch ($addStatus)
+            {
+                case "true":
+                    addMovieToList($row["ID"]);
+                    // header("Refresh:0; url=movie.php?id=".$row["ID"]);
+                    echo '<script type="text/javascript">notify("Added to list", 1000, "movie.php?id='.$row['ID'].'");</script>';
+                    break;
+
+                case "false":
+                    removeMovieFromList($row["ID"]);
+                    // header("Refresh:0; url=movie.php?id=".$row["ID"]);
+                    echo '<script type="text/javascript">notify("Removed from list", 1000, "movie.php?id='.$row['ID'].'");</script>';
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+
+        // Background YouTube Trailer
+        $ytQuery = $row["Title"]." movie trailer";
+        $queryFormatted = str_replace(" ", "+", $ytQuery);
+
+        // Download html of query
+        $html = file_get_contents("https://www.youtube.com/results?search_query=".$queryFormatted);
+        $urlStartIndex = strpos($html, "/watch?v=");
+        $ytCode = substr($html, $urlStartIndex + 9, 11);
+        $videoURL = "https://www.youtube.com/embed/".$ytCode;
+
+        // Output video trailer iframe
+        echo '<div id="bg-img"><iframe src="'.$videoURL.'?autoplay=1" frameborder="0" allowfullscreen allow="autoplay"></iframe></div>'; // https://www.youtube.com/embed/'.$ytCode.'?autoplay=1"
+
+
+
+        // Poster Element
+        echo "<div class='movie-details-poster'>";
+        echo "<image class='movie-poster-large' width='20%'></image>";
+        echo "</div>";
+
+
+
+
+
+
+
+
+        // Movie detail panels
+        echo '<div id="panel-wrapper">';
+
+
+
+
+
+
+
+        
+        // Movie Description/Overview
+        echo "<div class='movie-details' id='".$row["Title"]."'>";
+
+
+        // Title
+        echo "<h1>".$row["Title"]."</h1>";
         // Rating
         echo "<div id='rating-stars'>";
         $starsChecked = $row["StarRating"];
@@ -90,77 +119,92 @@ function outputMovieDetails($qry)
             echo "<a href='./movie.php?id=".$row["ID"]."&rated=".($starsChecked + $i + 1)."'><span id='" . ($starsChecked + $i + 1) . "' class='fa fa-star'></span>";
         }
         echo "</div>";
-
         // Add/Remove from list link
         $statusListed = $row["AddedList"];
         if ($statusListed > 0) {
             echo "<a href='./movie.php?id=".$row["ID"]."&add=false'><h2><i class='fa fa-thumbs-down'></i> Remove from List</h2></a>";
-        } else {
+        }
+        else {
             echo "<a href='./movie.php?id=".$row["ID"]."&add=true'><h2><i class='fa fa-thumbs-up'></i> Add to List</h2></a>";
         }
+        echo '<br>';
+
+
+
+        echo "<h3>Overview</h3>
+                <p id='movie-overview'></p><br>";
         
-        // Details table
+            // Details table
+            echo "
+            <h3>Details</h3>
+            <table id='table-movie-details'>
+                <col width='200'>
+                <col width='300'>
+                <col width='200'>
+                <col width='300'>
+            <tr>
+            <td class='td-label'>Genre</td><td>".$row["Genre"]."</td>
+            <td class='td-label'>Year</td><td>".$row["Year"]."</td>
+            </tr>
+            <tr>
+            <td class='td-label'>Studio</td><td>".$row["Studio"]."</td>
+            <td class='td-label'>Status</td><td>".$row["Status"]."</td>
+            </tr>
+            <tr>
+            <td class='td-label'>RRP</td><td>$".$row["RecRetPrice"]."</td>
+            <td class='td-label'>Rating</td><td>".$row["Rating"]."</td>
+            </tr>
+            <tr>
+            <td class='td-label'>Versions</td><td>".$row["Versions"]."</td>
+            <td class='td-label'>Aspect</td><td>".$row["Aspect"]."</td>
+            </tr>
+            <tr>
+            <td class='td-label'>Sound</td><td>".$row["Sound"]."</td>
+            <td class='td-label'>Popularity</td><td>".$row["SearchCount"]."</td>
+            </tr>
+            </table><br>
+            ";
+
+
+
+
+
+
+
+
+
+        // Edit buttons
         echo "
-        <h3>Details</h3>
-        <table id='table-movie-details'>
-            <col width='200'>
-            <col width='300'>
-            <col width='200'>
-            <col width='300'>
-        <tr>
-        <td class='td-label'>Genre</td><td>".$row["Genre"]."</td>
-        <td class='td-label'>Year</td><td>".$row["Year"]."</td>
-        </tr>
-        <tr>
-        <td class='td-label'>Studio</td><td>".$row["Studio"]."</td>
-        <td class='td-label'>Status</td><td>".$row["Status"]."</td>
-        </tr>
-        <tr>
-        <td class='td-label'>RRP</td><td>$".$row["RecRetPrice"]."</td>
-        <td class='td-label'>Rating</td><td>".$row["Rating"]."</td>
-        </tr>
-        <tr>
-        <td class='td-label'>Versions</td><td>".$row["Versions"]."</td>
-        <td class='td-label'>Aspect</td><td>".$row["Aspect"]."</td>
-        </tr>
-        <tr>
-        <td class='td-label'>Sound</td><td>".$row["Sound"]."</td>
-        <td class='td-label'>Popularity</td><td>".$row["SearchCount"]."</td>
-        </tr>
-        </table><br>
-        ";
-        
-        // Movie Description/Overview
-        echo "<h3>Overview</h3>";
-        echo "<p id='movie-overview'></p><br>";
+<div id='edit-btns'>
+<div class='btn-edit'>
+<a href='./movie.php?id=" . $row["ID"] . "&download=true' id='auto-update'><i class='fa fa-download'></i></a>
+</div>
+<div class='btn-edit'>
+<a href='./modifyMovie.php?id=" . $row["ID"] . "'><i class='fa fa-edit'></i></a>
+</div>
+<div class='btn-edit'>
+<a href='./movie.php?id=" . $row["ID"] . "&download=true&auto=true'><i class='fa fa-forward'></i></a>
+</div>
+<div class='btn-edit'>
+<a href='./movie.php?id=" . $row["ID"] . "&delete=true'><i class='fa fa-trash'></i></a>
+</div>
+</div>";
 
-        // Handle Add/Remove actions
-        if (isset($_GET["add"])) {
-            $addStatus = $_GET["add"];
-            switch ($addStatus) {
-            case "true":
-                addMovieToList($row["ID"]);
-                // header("Refresh:0; url=movie.php?id=".$row["ID"]);
-                echo '<script type="text/javascript">notify("Added to list", 1000, "movie.php?id='.$row['ID'].'");</script>';
 
-                break;
-            case "false":
-                removeMovieFromList($row["ID"]);
-                // header("Refresh:0; url=movie.php?id=".$row["ID"]);
-                echo '<script type="text/javascript">notify("Removed from list", 1000, "movie.php?id='.$row['ID'].'");</script>';
-                break;
-            default:
-                break;
-            }
-        }
+
+
+
+
+
         echo "</div>";
 
         $newSearchCount = $row["SearchCount"] + 1;
         $query = "UPDATE `moviesdb` SET `SearchCount` = '" . $newSearchCount . "' WHERE `ID` = '" . $row["ID"] . "'";
         $updateSuccess = mysqli_query($dbConnection, $query);
-    }
-    // Close containe div
-    echo "</div>";
+        }
+
+        // Close container div
+        echo "</div></div>";
 }
 
 /**
@@ -346,7 +390,7 @@ function outputDecadePanel($collectionTitle, $decade)
 function generateImagePanel($genre)
 {
     include "./php/connection.php";
-    $qry = "SELECT * FROM `moviesdb` WHERE `Genre`= '" . $genre . "' ORDER BY RAND() DESC LIMIT 12";
+    $qry = "SELECT * FROM `moviesdb` WHERE `Genre`= '" . $genre . "' ORDER BY RAND() DESC LIMIT 20";
     $result = mysqli_query($dbConnection, $qry);
     while ($row = $result->fetch_assoc()) {
         echo "  

@@ -6,14 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Popular Searches</title>
 
-    <!-- Stylesheets -->
-    <link href="./styles/styles.css" rel="stylesheet">
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <!-- Icons -->
-    <script src="https://use.fontawesome.com/af55a51058.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+    <?php
+    require "./php/html_head.php";
+    ?>
 </head>
 <body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

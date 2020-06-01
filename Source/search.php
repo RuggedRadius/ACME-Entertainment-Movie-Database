@@ -6,13 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Search</title>
 
-    <!-- Stylesheets -->
-    <link href="./styles/styles.css" rel="stylesheet">
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+    <?php
+    require "./php/html_head.php";
+    ?>
 </head>
 
 
@@ -37,21 +33,26 @@ require "./php/header.php";
 <form id="form-search" action="./searchResults.php" method="GET">
 
     <!-- Title -->
+    <div class="form-coupling">
     <label for="title" class="form-label">Title:</label>
-    <input type="text" name="title" id="title" width="200px"><br>
+    <input type="text" name="title" id="title"><br>
+    </div>
 
     <!-- Genre -->
+    <div class="form-coupling">
     <label for="title" class="form-label">Genre:</label>
-    <input type="text" name="genre" id="genre" width="200px"><br>
-    
+    <input type="text" name="genre" id="genre"><br>
+    </div>
     <!-- Rating -->
+        <div class="form-coupling">
     <label for="title" class="form-label">Rating:</label>
     <input type="text" name="rating" id="rating" width="200px"><br>
-    
+        </div>
     <!-- Year -->
+            <div class="form-coupling">
     <label for="title" class="form-label">Year:</label>
     <input type="text" name="year" id="year" width="200px"><br>
-
+            </div>
     <!-- Search Button -->
     <div class="button-holder">
         <button type="submit" form="form-search" value="Submit">Search</button>

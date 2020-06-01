@@ -5,12 +5,13 @@ var api_key = "f2e15980f239d4c99375ace9706067c5";
 var movies = document.getElementsByClassName("movie-details");
 
 console.log("Loading " + movies.length + " image(s)...");
-for (var i = 0; i < movies.length; i++) {
+for (var i = 0; i < movies.length; i++)
+{
     // Get title
     var movieTitle = movies[i].id;
 
     // Get image
-    var img = movies[i].getElementsByClassName("movie-poster")[0];
+    var img = document.getElementsByClassName("movie-poster")[0];
 
     // Fix query
     var query = FixQuery(movieTitle);
@@ -20,7 +21,7 @@ for (var i = 0; i < movies.length; i++) {
     var request = GenerateRequest(query);
 
     // Get and load image
-    GetImageURLbyQuery(request, img, movies[i]);
+    GetImageURLbyQuery(request, img); //, movies[i]
 }
 
 
@@ -57,6 +58,7 @@ function GetImageURLbyQuery(request, imgBox) {
 
             document.getElementById('movie-overview').innerText = data["results"][0]["overview"];
         }
-        imgBox.src = imageURL;
+        // imgBox.src = imageURL;
+        document.getElementsByClassName("movie-poster-large")[0].src = imageURL;
     });
 }

@@ -116,46 +116,4 @@ function GetImageURLbyQuery(request, imgBox) {
 
 
 
-// var request = base + api_key + "&query=" + "The+Matrix";
-// $.getJSON(request, function (data) {
-//     //data is the JSON string
-//     // Display movie poster
-//     var movie = document.getElementById("movie-display");
-
-//     for (var i = 0; i < 5; i++) {
-//         console.log(data["results"][i]["original_title"]);
-//         movie.innerHTML = data["results"][i]["title"];
-//         var imgURLBase = "https://image.tmdb.org/t/p/w600_and_h900_bestv2";
-//         var imgURL = imgURLBase + data["results"][i]["poster_path"];
-//         movie.innerHTML += "<image src='" + imgURL + "' width='200px'></image>";
-//     }
-
-//     // console.log(data["results"][0]["original_title"]);
-//     // movie.innerHTML = data["results"][0]["title"];
-//     // var imgURLBase = "https://image.tmdb.org/t/p/w600_and_h900_bestv2";
-//     // var imgURL = imgURLBase + data["results"][0]["poster_path"];
-//     // movie.innerHTML += "<image src='" + imgURL + "' width='200px'></image>";
-// });
-
-
-
-
-
-
-
-
-
-//  Fetch a poster based on movie ID
-// request = "https://api.themoviedb.org/3/movie/550?api_key=" + api_key;
-// $.getJSON(request, function (data) {
-//     //data is the JSON string
-//     // Sample Image URL = "https://image.tmdb.org/t/p/w600_and_h900_bestv2/aQvJ5WPzZgYVDrxLX4R6cLJCEaQ.jpg";
-//     var imgURLBase = "https://image.tmdb.org/t/p/w600_and_h900_bestv2";
-//     var imgURL = imgURLBase + data["poster_path"];
-
-//     // Display movie poster
-//     var movie = document.getElementById("movie-display");
-//     movie.innerHTML = "<image src='" + imgURL + "' width='500px'></image>";
-// });
-
 

@@ -1,0 +1,114 @@
+#page-header
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 120px;
+    width: 100%;
+    background: linear-gradient(0deg, transparent, black, black);
+    z-index: 10;
+    display: block;
+}
+
+#page-header a
+{
+    padding: 0px 30px;
+}
+
+#logo a
+{
+    color: red;
+    padding: 0px;
+}
+
+#logo
+{
+    position: fixed;
+    float: right;
+    z-index: 50;
+    right: 10px;
+    top: 10px;
+    font-size: 5rem;
+    margin-right: 20px;
+    z-index: 500;
+}
+
+#nav-links
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: white;
+    float: left;
+    font-size: 2rem;
+
+    z-index: 1500;
+
+    margin: 20px;
+}
+
+#nav-links i
+{
+    color: white;
+    font-size: 2.5rem;
+    fill: white;
+    z-index: 1000;
+}
+
+.nav-icon
+{
+    height: 50px;
+    color: white;
+}
+
+#nav-links a {
+    padding-left: 5px;
+    z-index: 1000;
+
+}
+
+#nav-links a:hover
+{
+    transition-duration: 0.25s;
+    color: red;
+    text-shadow: 0px 0px 20px white;
+}
+
+#navMenu
+{
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background: radial-gradient(darkgray, grey);
+    z-index: 1000;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-wrap: wrap;
+}
+
+#navMenu p {
+    width: 100%;
+    display: block;
+
+    font-size: 3rem;
+
+    text-align: center;
+}
+
+@media only screen and (max-width: 550px) {
+    #nav-links a {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 551px) {
+    #nav-links a {
+        display: inline-block;
+    }
+}
