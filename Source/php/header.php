@@ -36,7 +36,7 @@ echo "
 
   <!-- Logo -->
 <div id='logo'>
-    <a href='./admin.php'><p>BenFlix</p></a>            
+    <a href='./admin.php'>CAPTIS</a>            
 </div>
 
 

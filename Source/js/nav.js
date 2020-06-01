@@ -14,9 +14,16 @@ function toggleNav()
 
 function showMenu() {
     document.getElementById("navMenu").style.display = 'flex';
+    document.getElementById("navMenu").style.width = '100%';
+    document.getElementById("navMenu").style.height = '100%';
 }
 
 
 function hideMenu() {
-    document.getElementById("navMenu").style.display = 'none';
+    document.getElementById("navMenu").style.width = '0px';
+    document.getElementById("navMenu").style.height = '0px';
+    setTimeout(function() {
+        // document.getElementById("navMenu").style.display = 'none';
+    }, 250);
+
 }

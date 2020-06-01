@@ -17,8 +17,9 @@
 
 #logo a
 {
-    color: red;
+    color: rgb(69, 173 , 170);
     padding: 0px;
+    font-family: 'Cinzel Decorative', cursive;
 }
 
 #logo
@@ -28,9 +29,10 @@
     z-index: 50;
     right: 10px;
     top: 10px;
-    font-size: 5rem;
+    font-size: 3.5rem;
     margin-right: 20px;
     z-index: 500;
+
 }
 
 #nav-links
@@ -70,18 +72,18 @@
 #nav-links a:hover
 {
     transition-duration: 0.25s;
-    color: red;
+    color: rgb(69, 173 , 170);
     text-shadow: 0px 0px 20px white;
 }
 
 #navMenu
 {
-    display: none;
+    display: flex;
     position: fixed;
     top: 0;
-    right: 0;
-    width: 100vw;
-    height: 100vh;
+    left: 0;
+    width: 0;
+    height: 0;
 
     background: radial-gradient(darkgray, grey);
     z-index: 1000;
@@ -90,6 +92,10 @@
     align-items: center;
 
     flex-wrap: wrap;
+
+    transition-duration: 0.25s;
+
+    overflow: hidden;
 }
 
 #navMenu p {

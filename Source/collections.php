@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>BenFlix</title>
+    <title>Captis</title>
     <?php
     require "./php/html_head.php";
     ?>
@@ -45,7 +45,7 @@ outputCollectionPanel("Star Wars", "star wars");
 outputCollectionPanel("Harry Potter", "Harry Potter");
 outputCollectionPanel("The Matrix", "matrix");
 outputCollectionPanel("Superman", "superman");
-outputCollectionPanel("Lord of the Rings", "lord of the rings");
+outputCollectionPanel("Lord of the Rings", "lord of the rings hobbit");
 outputDecadePanel("60's", "196");
 outputDecadePanel("70's", "197");
 outputDecadePanel("80's", "198");
