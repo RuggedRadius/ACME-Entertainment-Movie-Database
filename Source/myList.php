@@ -5,15 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My List</title>
 
-    <!-- Stylesheets -->
-    <link href="./styles/styles.css" rel="stylesheet">
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+    <?php
+    require "./php/html_head.php";
+    ?>
 </head>
 <body>
+<script type="text/javascript" src="./js/notification.js"></script>
 <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -39,6 +36,7 @@ require "./php/fetch.php";
 $qry = "SELECT * FROM `myList`";
 outputPopular($qry);
 ?>
-<script type="text/javascript" src="./js/fetchImage.js"></script>    
+<script type="text/javascript" src="./js/fetchImage.js"></script>
+
 </body>
 </html>

@@ -16,7 +16,7 @@ echo "  <!-- HEADER -->
 
             <!-- Logo -->
             <div id='logo'>
-                <a href='./index.php'><p>BenFlix</p></a>
+                <a href='./index.php'><p>CAPTIS</p></a>
                 <h2 style='font-size: 2rem; color: gray; line-height: 0px;'>Admin Mode</h2>            
             </div>
             

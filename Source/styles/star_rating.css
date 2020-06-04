@@ -1,0 +1,17 @@
+/* Star Rating System */
+.checked
+{
+    color: red;
+}
+
+
+#rating-stars span:hover 
+{
+    text-shadow: 0px 0px 10px white;
+}
+
+#rating-stars a
+{
+    font-size: 1.75rem;
+    color: gray;
+}

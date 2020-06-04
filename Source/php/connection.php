@@ -14,11 +14,11 @@
 // PHP Client Setup
 // 0 = XAMPP / Default
 // 1 = USBWebServer
-$client = 0;
+$client = 1;
 
 // If on TAFE network, change this to 1.
 // Disables YouTube trailers on movie pages.
-$atTafe = 1;
+$atTafe = 0;
 
 
 // Credentials setup
@@ -43,6 +43,3 @@ default:
 
 // Connect to Database
 $dbConnection = mysqli_connect($server, $username, $password, $db);
-
-// Intentionally creating a warning for a TAFE screenshot.
-$bullshit = ".......................................................................";

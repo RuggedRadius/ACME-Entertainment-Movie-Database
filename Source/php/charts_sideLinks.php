@@ -14,7 +14,7 @@
 require "connection.php";
 echo '
 <div id="chart-list">
-<a href="charts.php?byGenre=top10" onclick="bePatient();"><p class="chart-select">The Top 10</p></a>
+<a href="charts.php?byGenre=top10" onclick="bePatient();"><p class="chart-select">Top10</p></a>
 
 <ul style="font-size: 2rem; list-style: none;">
 <a href="charts.php?byGenre=60s" onclick="bePatient();"><li>60s</li></a>
@@ -25,7 +25,7 @@ echo '
 <a href="charts.php?byGenre=10s" onclick="bePatient();"><li>10s</li></a>
 </ul>
 
-<a href="charts.php?byGenre=all" onclick="bePatient();"><p class="chart-select">By Genre</p></a>
+<a href="charts.php?byGenre=all" onclick="bePatient();"><p class="chart-select">Genres</p></a>
 
 <ul style="font-size: 2rem; list-style: none;">';
 
@@ -37,4 +37,3 @@ while ($row = $result->fetch_assoc()) {
 }
 echo '  </ul>
         </div>';
-        

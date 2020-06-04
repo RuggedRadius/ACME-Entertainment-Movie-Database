@@ -79,11 +79,81 @@ function outputHorizGenre($chartTitle, $_query)
     }
 
     imagepng($image, "outputimage.png");
-    echo "<br/><img src='outputimage.png'>";
+    echo "<img class='chart-output-img'  src='outputimage.png' style='transform: rotate(90deg) translate(400px, 200px); width: 100%; height: 100%'>";
     imagedestroy($image);
 
     echo "</div>";
 }
+
+function outputVerticalGenre($chartTitle, $_query)
+{
+    include "./php/connection.php";
+
+    // Echo out
+    echo "<div class='pop-chart'>";
+
+    // Execute query
+    $result = mysqli_query($dbConnection, $_query);
+
+    // Get number of rows for image size
+    $numRows = mysqli_num_rows($result);
+
+    // Output data
+    $ySize = 30;
+    $barWidth = 30;
+    $barSpacing = 45;
+    $barStartHeight = $ySize - 50;
+    $xSize = 100 + ($barSpacing * $numRows);
+    $ySize = 1500;
+    $image = @imagecreatetruecolor($xSize, $ySize) or die("Cannot Initialize new GD image stream");
+
+    // Set Colours
+    $backgroundColor = imagecolorallocatealpha($image, 0, 0, 0, 0);
+    $textColor = imagecolorallocatealpha($image, 69, 173, 170, 0);
+    $barColor = imagecolorallocatealpha($image, 69, 173, 170, 0);
+    $valColor = imagecolorallocatealpha($image, 255, 255, 255, 0);
+    $black = imagecolorallocate($image, 250, 250, 250);
+    $actualBlack = imagecolorallocate($image, 0, 0, 0);
+    $bg_color = imagecolorat($image, 1, 1);
+    imagecolortransparent($image, $bg_color);
+
+    // Title
+    // imagestring($image, 5, $xSize/2 - 140, 20, $chartTitle, $textColor);
+    $font = 'font.ttf';
+    imagettftext($image, 30, 0, 50, 50, $textColor, $font, $chartTitle);
+    
+    $posterSpacing = 35;
+    $posterHeight = "150";
+    $posterWidth = "90";
+    
+    $rowCounter = 0;
+    while ($row = $result->fetch_assoc()) {
+        $rowCounter++;
+        $curCount = $row["SearchCount"];
+
+        // Bar
+        // Bar Coordinates
+        $y1 = 500;
+        $y2 = $y1 + (10 * $row["SearchCount"]);
+        $x1 = 50 + (($rowCounter - 1) * $barSpacing);
+        $x2 = $x1 + $barWidth;
+
+        // Draw bar
+        $bar = imagefilledrectangle($image, $x1, $y1, $x2, $y2, $barColor);
+
+        
+        $barCenterX = $x1 + (($x2 - $x1) / 2);
+        imagestringUp($image, 5, $x1 + ($barWidth/3), 450, $row["Title"], $valColor);
+        imagestring($image, 5, $barCenterX - 8, $y2 + 20, $row["SearchCount"], $black);
+    }
+
+    imagepng($image, "outputimage.png");
+    echo "<img class='chart-output-img'  src='outputimage.png' style='margin: 10%; width: 80%; height: 100%'>";
+    imagedestroy($image);
+
+    echo "</div>";
+}
+
 
 /**
  * A method to ouput data from a parsed mysqli query.
@@ -117,8 +187,8 @@ function outputHorizGenresChart($chartTitle, $_query)
 
     // Set Colours
     $backgroundColor = imagecolorallocatealpha($image, 0, 0, 0, 0);
-    $textColor = imagecolorallocatealpha($image, 255, 255, 255, 0);
-    $barColor = imagecolorallocatealpha($image, 255, 0, 50, 0);
+    $textColor = imagecolorallocatealpha($image, 69, 173, 170, 0);
+    $barColor = imagecolorallocatealpha($image, 69, 173, 170, 0);
     $valColor = imagecolorallocatealpha($image, 255, 255, 255, 0);
     $black = imagecolorallocate($image, 250, 250, 250);
     $actualBlack = imagecolorallocate($image, 0, 0, 0);
@@ -126,7 +196,9 @@ function outputHorizGenresChart($chartTitle, $_query)
     imagecolortransparent($image, $bg_color);
 
     // Title
-    imagestring($image, 5, $xSize/2, 20, $chartTitle, $valColor);
+    // imagestring($image, 5, $xSize/2, 20, $chartTitle, $valColor);
+    $font = 'font.ttf';
+    imagettftext($image, 50, 0, 450, 50, $textColor, $font, $chartTitle);
     
     $posterSpacing = 35;
     $posterHeight = "150";
@@ -153,7 +225,7 @@ function outputHorizGenresChart($chartTitle, $_query)
     }
 
     imagepng($image, "outputimage.png");
-    echo "<br/><img src='outputimage.png'>";
+    echo "<br/><img class='chart-output-img' width='100%' src='outputimage.png'>";
     imagedestroy($image);
 
     echo "</div>";

@@ -4,14 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>BenFlix</title>
-    <!-- Stylesheets -->
-    <link href="./styles/styles.css" rel="stylesheet">
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <!-- Icons -->
-    <script src="https://use.fontawesome.com/af55a51058.js"></script>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <title>Captis</title>
+    <?php
+    require "./php/html_head.php";
+    ?>
 </head>
 
 <body>
@@ -47,9 +43,9 @@ outputCollectionPanel("Christmas", "christmas");
 outputCollectionPanel("Star Trek", "star trek");
 outputCollectionPanel("Star Wars", "star wars");
 outputCollectionPanel("Harry Potter", "Harry Potter");
-outputCollectionPanel("The Matrix", "matrix");
-outputCollectionPanel("Superman", "superman");
-outputCollectionPanel("Lord of the Rings", "lord of the rings");
+// outputCollectionPanel("The Matrix", "matrix");
+// outputCollectionPanel("Superman", "superman");
+// outputCollectionPanel("Lord of the Rings", "lord of the rings");
 outputDecadePanel("60's", "196");
 outputDecadePanel("70's", "197");
 outputDecadePanel("80's", "198");
@@ -65,5 +61,6 @@ outputDecadePanel("10's", "201");
 </div>
 <!-- Scripts -->
 <script type="text/javascript" src="./js/fetchImage.js"></script>
+<script type="text/javascript" src="./js/nav.js"></script>
 </body>
 </html>

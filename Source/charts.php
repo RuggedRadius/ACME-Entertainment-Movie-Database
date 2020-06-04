@@ -6,14 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Popular Searches</title>
 
-    <!-- Stylesheets -->
-    <link href="./styles/styles.css" rel="stylesheet">
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <!-- Icons -->
-    <script src="https://use.fontawesome.com/af55a51058.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+    <?php
+    require "./php/html_head.php";
+    ?>
 </head>
 <body>
 <!-- Scripts -->
@@ -38,6 +33,7 @@
 require "./php/header.php";
 
 echo '<div id="chart-wrapper">';
+
 require "./php/charts_sideLinks.php";
 require "./php/outputCharts.php";
 
@@ -70,52 +66,52 @@ if (isset($_GET)) {
             break;
 
         case "top10":
-            $chartTitle = "Most Popular Movies of All Time";
+            $chartTitle = "Popular Movies of All Time";
             $qry = "SELECT * FROM `moviesdb` ORDER BY `SearchCount` DESC LIMIT 10";
             // outputChart($chartTitle, $qry);
-            outputHorizGenre($chartTitle, $qry);
+            outputVerticalGenre($chartTitle, $qry);
             break;
 
         case "60s":
-            $chartTitle = "Most 60s Popular Movies";
+            $chartTitle = "60s Popular Movies";
             $qry = "SELECT * FROM (SELECT * FROM `moviesdb` WHERE `Year` LIKE '196_' ORDER BY `SearchCount` DESC ) t ORDER BY `SearchCount` DESC LIMIT 10";
-            outputHorizGenre($chartTitle, $qry);
+            outputVerticalGenre($chartTitle, $qry);
             break;
 
         case "70s":
-            $chartTitle = "Most 70s Popular Movies";
+            $chartTitle = "70s Popular Movies";
             $qry = "SELECT * FROM (SELECT * FROM `moviesdb` WHERE `Year` LIKE '197_' ORDER BY `SearchCount` DESC ) t ORDER BY `SearchCount` DESC LIMIT 10";
-            outputHorizGenre($chartTitle, $qry);
+            outputVerticalGenre($chartTitle, $qry);
             break;
 
         case "80s":
-            $chartTitle = "Most 80s Popular Movies";
+            $chartTitle = "80s Popular Movies";
             $qry = "SELECT * FROM (SELECT * FROM `moviesdb` WHERE `Year` LIKE '198_' ORDER BY `SearchCount` DESC ) t ORDER BY `SearchCount` DESC LIMIT 10";
-            outputHorizGenre($chartTitle, $qry);
+            outputVerticalGenre($chartTitle, $qry);
             break;
 
         case "90s":
-            $chartTitle = "Most 90s Popular Movies";
+            $chartTitle = "90s Popular Movies";
             $qry = "SELECT * FROM (SELECT * FROM `moviesdb` WHERE `Year` LIKE '199_' ORDER BY `SearchCount` DESC ) t ORDER BY `SearchCount` DESC LIMIT 10";
-            outputHorizGenre($chartTitle, $qry);
+            outputVerticalGenre($chartTitle, $qry);
             break;
 
         case "00s":
-            $chartTitle = "Most 00s Popular Movies";
+            $chartTitle = "00s Popular Movies";
             $qry = "SELECT * FROM (SELECT * FROM `moviesdb` WHERE `Year` LIKE '200_' ORDER BY `SearchCount` DESC ) t ORDER BY `SearchCount` DESC LIMIT 10";
-            outputHorizGenre($chartTitle, $qry);
+            outputVerticalGenre($chartTitle, $qry);
             break;
 
         case "10s":
-            $chartTitle = "Most 10s Popular Movies";
+            $chartTitle = "10s Popular Movies";
             $qry = "SELECT * FROM (SELECT * FROM `moviesdb` WHERE `Year` LIKE '201_' ORDER BY `SearchCount` DESC ) t ORDER BY `SearchCount` DESC LIMIT 10";
-            outputHorizGenre($chartTitle, $qry);
+            outputVerticalGenre($chartTitle, $qry);
             break;
 
         default:
             $chartTitle= "Popular ".$_GET["byGenre"]." Movies";
             $query = "SELECT `Genre`, `ID`, `SearchCount`, `Title` FROM (SELECT * FROM `moviesdb` WHERE `Genre` = '".$_GET["byGenre"]."') t ORDER BY `SearchCount` DESC LIMIT 10";
-            outputHorizGenre($chartTitle, $query);
+            outputVerticalGenre($chartTitle, $query);
             break;
         }
     } else {
