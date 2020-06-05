@@ -36,11 +36,9 @@ echo "
 
   <!-- Logo -->
 <div id='logo'>
-    <a href='./admin.php'>CAPTIS</a>            
+    <a href='#'>CAPTIS</a>            
 </div>
 
 
 
 ";
-
-
