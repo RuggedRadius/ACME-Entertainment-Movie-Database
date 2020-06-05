@@ -12,9 +12,6 @@
  */
 
 echo "  
-  
-
-  
 <!-- HEADER -->
 <div id='page-header'>
 </div>
@@ -26,7 +23,7 @@ echo "
     <p><a href='./popular.php'><i class='fa fa-fire'></i>Popular</a></p>
     <p><a href='./search.php'><i class='fa fa-search'></i>Search</a></p>
     <p><a href='./charts.php'><i class='fa fa-align-left'></i>Charts</a></p>
-    <p><a href='./myList.php'><i class='fa fa-heart'></i>My List</a></p>
+    <p><a href='./login.php'><i class='fa fa-fire'></i>Admin Login</a></p>
 </div>
 
 <!-- Menu Button -->
@@ -34,11 +31,10 @@ echo "
     <i class='fa fa-bars'><a>MENU</a></i>
 </div>
 
-  <!-- Logo -->
+<!-- Logo -->
 <div id='logo'>
     <a href='#'>CAPTIS</a>            
 </div>
-
-
-
 ";
+
+// <p><a href='./myList.php'><i class='fa fa-heart'></i>My List</a></p>

@@ -20,29 +20,31 @@ $query = "SELECT * FROM `moviesdb`";
 // Execute query
 $result = mysqli_query($dbConnection, $query);
 
+echo '<div id="page-wrapper-admin">';
+
 // Open table
 echo "<table id='table-admin'>
-        <col width='50'>
-        <col width='400'>
-        <col width='200'>
+        <col width='5%'>
+        <col width='10%'>
+        <col width='10%'>
 
-        <col width='150'>
-        <col width='100'>
-        <col width='200'>
+        <col width='10%'>
+        <col width='5%'>
+        <col width='5%'>
 
-        <col width='50'>
-        <col width='100'>
-        <col width='100'>
+        <col width='5%'>
+        <col width='5%'>
+        <col width='5%'>
 
-        <col width='150'>
-        <col width='100'>
-        <col width='50'>
+        <col width='5%'>
+        <col width='5%'>
+        <col width='5%'>
 
-        <col width='50'>
-        <col width='50'>
-        <col width='50'>
+        <col width='5%'>
+        <col width='5%'>
+        <col width='5%'>
 
-        <col width='50'>
+        <col width='5%'>
         <tr>
             <th>ID</th>
             <th>Title</th>
@@ -99,3 +101,5 @@ while ($row = $result->fetch_assoc()) {
 
 // Close table
 echo "</table";
+
+echo "</div>";

@@ -209,7 +209,8 @@
     margin: auto;
     overflow: hidden;
 
-    
+    max-width: 360px;
+    max-height: 540px;
 }
 
 .movie-poster-large

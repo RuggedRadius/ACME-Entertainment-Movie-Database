@@ -30,14 +30,76 @@
  * @link     http://pear.php.net/package/PackageName
  */
 
-require "./php/header.php";
+require "./php/headerAdmin.php";
 require "./php/connection.php";
+require "./php/fetch.php";
 
-echo "<div id='btn-edit-movie'>
-    <a href=''><p><i class='fa fa-trash'></i><p></a>
-</div>";
+// Get local movie ID
+$movieID = $_GET["id"];
 
-            // Update Details
+// Check from download information action
+if (isset($_GET["download"])) {
+    // Get title of movie
+    $query = "SELECT * FROM `moviesdb` WHERE `id`='".$movieID."' LIMIT 1";
+        
+    $result = mysqli_query($dbConnection, $query);
+    $movieTitle = "";
+        
+    while ($row = $result->fetch_assoc()) {
+        $movieTitle = $row["Title"];
+    }
+
+    // Get moviesdb ID from moviesdb
+    $movieTitle = str_replace(" ", "+", $movieTitle);
+    $request = "https://api.themoviedb.org/3/search/movie?api_key=f2e15980f239d4c99375ace9706067c5&query=".$movieTitle;
+    $strJSON = file_get_contents($request);
+    $json = json_decode($strJSON, true);
+            
+    // Get movie info
+    $moviedbID = $json["results"][0]["id"];
+    $request = "https://api.themoviedb.org/3/movie/".$moviedbID."?api_key=f2e15980f239d4c99375ace9706067c5";
+    $strJSON = file_get_contents($request);
+    $json = json_decode($strJSON, true);
+
+    // Extract movie info
+    $curGenre = $json["genres"][0]["name"];
+    $curYear = $json["release_date"];
+    $curYear = substr($curYear, 0, 4);
+    $curStudio = $json["production_companies"][0]["name"];
+    $curStatus = $json["status"];
+
+    // Develop query/statement for MySQL
+    $query = "  UPDATE `moviesdb` 
+                SET `Genre`='".$curGenre."', `Year`='".$curYear."', `Studio`='".$curStudio."', `Status`='".$curStatus."' 
+                WHERE `ID`='".$movieID."'
+                LIMIT 1";
+
+    // Execute query
+    $result = mysqli_query($dbConnection, $query);
+
+    // Display notification
+    if (isset($_GET["auto"])) {
+        if ($_GET["auto"] == "true") {
+            echo '<script type="text/javascript">notify("Movie information updated", 2000, "modifyMovie.php?id='.($movieID + 1).'&download=true&auto=true");</script>';
+        }
+    } else {
+        echo '<script type="text/javascript">notify("Movie information updated", 2000, "modifyMovie.php?id='.$movieID.'");</script>';
+    }
+}
+
+// Check for delete action
+if (isset($_GET["delete"])) {
+    $query = "DELETE FROM `moviesdb` WHERE `ID`='".$movieID."' LIMIT 1";
+    $result = mysqli_query($dbConnection, $query);
+    echo '<script type="text/javascript">notify("Movie deleted", 2000, "admin.php");</script>';
+}
+
+
+// echo "<div id='btn-edit-movie'>
+//     <a href=''><p><i class='fa fa-trash'></i><p></a>
+// </div>";
+
+// Update Details
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $valID = $_POST["ID"];
     $valTitle = $_POST["Title"];
@@ -79,7 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = mysqli_query($dbConnection, $query);
 
     // Show notification
-    echo '<script type="text/javascript">notify("Movie has been updated.", 1000, "movie.php?id='.$valID.'");</script>';
+    echo '<script type="text/javascript">notify("Movie has been updated.", 1000, "modifyMovie.php?id='.$valID.'");</script>';
 
     // Redirect to original movie page
     // header("Refresh:0; url=movie.php?id=".$valID);
@@ -126,85 +188,85 @@ while ($row = $result->fetch_assoc()) {
                 <input type='hidden' name='ID' id='ID' value='".$row["ID"]."'>
 
                 <!-- Title -->
-                <div class='edit-row'>
+                <div class='form-coupling'>
                 <label class='mod-form-label'>Title:</label>
                 <input type='text' name='Title' id='Title' width='200px' value='".$row["Title"]."'>
                 </div>
 
                 <!-- Genre -->
-                <div class='edit-row'>
+                <div class='form-coupling'>
                 <label class='mod-form-label'>Genre:</label>
                 <input type='text' name='Genre' id='Genre' width='200px' value='".$row["Genre"]."'><br>
                 </div>
 
                 <!-- Year -->
-                <div class='edit-row'>
+                <div class='form-coupling'>
                 <label class='mod-form-label'>Year:</label>
                 <input type='text' name='Year' id='Year' width='200px' value='".$row["Year"]."'><br>
                 </div>
 
                 <!-- Studio -->
-                <div class='edit-row'>
+                <div class='form-coupling'>
                 <label class='mod-form-label'>Studio:</label>
                 <input type='text' name='Studio' id='Studio' width='200px' value='".$row["Studio"]."'><br>
                 </div>
 
                 <!-- Status -->
-                <div class='edit-row'>
+                <div class='form-coupling'>
                 <label class='mod-form-label'>Status:</label>
                 <input type='text' name='Status' id='Status' width='200px' value='".$row["Status"]."'><br>
                 </div>
 
                 <!-- Sound -->
-                <div class='edit-row'>
+                <div class='form-coupling'>
                 <label class='mod-form-label'>Sound:</label>
                 <input type='text' name='Sound' id='Sound' width='200px' value='".$row["Sound"]."'><br>
                 </div>
 
                 <!-- Versions -->
-                <div class='edit-row'>
+                <div class='form-coupling'>
                 <label class='mod-form-label'>Versions:</label>
                 <input type='text' name='Versions' id='Versions' width='200px' value='".$row["Versions"]."'><br>
                 </div>
 
                 <!-- RRP -->
-                <div class='edit-row'>
+                <div class='form-coupling'>
                 <label class='mod-form-label'>RRP:</label>
                 <input type='text' name='RRP' id='RRP' width='200px' value='".$row["RecRetPrice"]."'><br>
                 </div>
 
                 <!-- Rating -->
-                <div class='edit-row'>
+                <div class='form-coupling'>
                 <label class='mod-form-label'>Rating:</label>
                 <input type='text' name='Rating' id='Rating' width='200px' value='".$row["Rating"]."'><br>
                 </div>
 
                 <!-- Aspect -->
-                <div class='edit-row'>
+                <div class='form-coupling'>
                 <label class='mod-form-label'>Aspect:</label>
                 <input type='text' name='Aspect' id='Aspect' width='200px' value='".$row["Aspect"]."'><br>
                 </div>
 
                 <!-- Popularity -->
-                <div class='edit-row'>
+                <div class='form-coupling'>
                 <label class='mod-form-label'>Popularity:</label>
                 <input type='text' name='Popularity' id='Popularity' width='200px' value='".$row["SearchCount"]."'><br>
                 </div>
 
                 <!-- AddedList -->
-                <div class='edit-row'>
+                <div class='form-coupling'>
                 <label class='mod-form-label'>AddedList:</label>
                 <input type='text' name='AddedList' id='AddedList' width='200px' value='".$row["AddedList"]."'><br>
                 </div>
 
                 <!-- StarRating -->
-                <div class='edit-row'>
+                <div class='form-coupling'>
                 <label class='mod-form-label'>Star Rating:</label>
                 <input type='text' name='StarRating' id='StarRating' width='200px' value='".$row["StarRating"]."'><br>
                 </div>
 
                 <!-- Search Button -->
-                <div class='edit-row'>
+                <div class='form-coupling'>
                 <div class='button-holder'>
                     <button type='submit' form='form-modify' value='Submit'>Save Details</button>
                 </div>
@@ -213,6 +275,21 @@ while ($row = $result->fetch_assoc()) {
             ";
 
     echo "</div>";
+
+
+    // Edit buttons
+    echo "
+        <div id='edit-btns'>
+        <div class='btn-edit'>
+        <a href='./modifyMovie.php?id=" . $row["ID"] . "&download=true' id='auto-update'><i class='fa fa-download'></i></a>
+        </div>
+        <div class='btn-edit'>
+        <a href='./modifyMovie.php?id=" . $row["ID"] . "&download=true&auto=true'><i class='fa fa-forward'></i></a>
+        </div>
+        <div class='btn-edit'>
+        <a href='./modifyMovie.php?id=" . $row["ID"] . "&delete=true'><i class='fa fa-trash'></i></a>
+        </div>
+        </div>";
 }
 // Close Filter
 echo "</div>";

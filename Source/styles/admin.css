@@ -1,17 +1,22 @@
 #table-admin
 {
     position: absolute;
-    top: 50%;
+
+
+    /* top: 50%;
     left: 50%;
     transform: translate(-50%, -35vh);
-
-    width: 100%;
+    width: 100%; */
 
     color: white;
     font-size: 1.5rem;
-    /* border: 1px solid white; */
 
-    /* margin-left: 50px; */
+
+    left: 0;
+    width: 80%;
+    margin: 100px 10px 20px 10px;
+
+
 }
 
 #table-admin tr
@@ -22,8 +27,8 @@
 #table-admin tr:hover
 {
     background: black;
-    color: red;
-    fill: red;
+    color: rgb(69, 173 , 170);
+    fill: rgb(69, 173 , 170);
 }
 
 #table-admin th
@@ -31,14 +36,15 @@
     position: -webkit-sticky;
     position: sticky;
     background: linear-gradient(transparent, black, transparent);
-    color: #a01215;
-    font-size: 2rem;
+    color: rgb(69, 173 , 170);
+    font-size: 1.2rem;
 }
 
-#table-admin td{
+#table-admin td
+{
     overflow: hidden;
-    white-space: nowrap;
-    padding: 0px 20px;
+    /* white-space: nowrap; */
+    /* padding: 0px 20px; */
     font-size: 1rem;
 }
 

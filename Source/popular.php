@@ -32,6 +32,7 @@
 
 require "./php/header.php";
 require "./php/connection.php";
+require "./php/subscribe.php";
 
 // Formulate query
 $qry = "SELECT * FROM `moviesdb` ORDER BY `SearchCount` DESC LIMIT 50";

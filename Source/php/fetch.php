@@ -176,21 +176,7 @@ function outputMovieDetails($qry)
 
 
         // Edit buttons
-//         echo "
-        // <div id='edit-btns'>
-        // <div class='btn-edit'>
-        // <a href='./movie.php?id=" . $row["ID"] . "&download=true' id='auto-update'><i class='fa fa-download'></i></a>
-        // </div>
-        // <div class='btn-edit'>
-        // <a href='./modifyMovie.php?id=" . $row["ID"] . "'><i class='fa fa-edit'></i></a>
-        // </div>
-        // <div class='btn-edit'>
-        // <a href='./movie.php?id=" . $row["ID"] . "&download=true&auto=true'><i class='fa fa-forward'></i></a>
-        // </div>
-        // <div class='btn-edit'>
-        // <a href='./movie.php?id=" . $row["ID"] . "&delete=true'><i class='fa fa-trash'></i></a>
-        // </div>
-        // </div>";
+
 
 
 
@@ -392,7 +378,7 @@ function outputDecadePanel($collectionTitle, $decade)
 function generateImagePanel($genre)
 {
     include "./php/connection.php";
-    $qry = "SELECT * FROM `moviesdb` WHERE `Genre`= '" . $genre . "' ORDER BY RAND() DESC LIMIT 20";
+    $qry = "SELECT * FROM `moviesdb` WHERE `Genre`= '" . $genre . "' ORDER BY RAND() DESC LIMIT 8";
     $result = mysqli_query($dbConnection, $qry);
     while ($row = $result->fetch_assoc()) {
         echo "  
