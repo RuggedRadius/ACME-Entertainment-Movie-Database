@@ -13,6 +13,7 @@ a
     color: white;
 }
 
+html {overflow: -moz-scrollbars-none;}
 
 
 #page-wrapper
@@ -25,7 +26,10 @@ a
 body {
     height: 100vh;
     background: radial-gradient(#000000, #222222);
+
+
     overflow: -moz-scrollbars-none;
+    scrollbar-width: none;
     /* overflow: hidden; */
 }
 

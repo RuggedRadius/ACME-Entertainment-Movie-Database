@@ -40,6 +40,7 @@
     overflow-x: hidden;
     overflow-y: visible;
     overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
     
     /* border: 2px solid white; */
 
@@ -49,6 +50,7 @@
 #discovery-wrapper::-webkit-scrollbar 
 { 
     width: 0 !important; 
+    display: none;
 }
 
 body::-webkit-scrollbar 
