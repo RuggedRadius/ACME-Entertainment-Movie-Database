@@ -10,6 +10,7 @@ echo '
 <link href="./styles/admin.css" rel="stylesheet">
 <link href="./styles/forms.css" rel="stylesheet">
 <link href="./styles/charts.css" rel="stylesheet">
+<link href="./styles/subscribe.css" rel="stylesheet">
 <link href="./styles/modify_movie.css" rel="stylesheet">
 <link href="./styles/star_rating.css" rel="stylesheet">
 <!-- Fonts -->

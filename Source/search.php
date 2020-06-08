@@ -13,7 +13,7 @@
 
 
 <body>
-<?php 
+<?php
 /**
  * Short description for file
  *
@@ -25,7 +25,9 @@
  * @license  http://www.php.net/license/3_01.txt  PHP License 3.01
  * @link     http://pear.php.net/package/PackageName
  */
-require "./php/header.php"; 
+require "./php/header.php";
+require "./php/subscribe.php";
+
 ?>
 
 <div class="side-title"><p>Search</p></div>
@@ -53,6 +55,7 @@ require "./php/header.php";
     <label for="title" class="form-label">Year:</label>
     <input type="text" name="year" id="year" width="200px"><br>
             </div>
+            
     <!-- Search Button -->
     <div class="button-holder">
         <button type="submit" form="form-search" value="Submit">Search</button>

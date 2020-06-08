@@ -31,6 +31,7 @@
  */
 
 require "./php/header.php";
+require "./php/subscribe.php";
 
 echo '<div id="chart-wrapper">';
 

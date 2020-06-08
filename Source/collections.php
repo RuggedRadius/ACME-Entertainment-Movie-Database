@@ -30,6 +30,7 @@
 
 require "./php/header.php";
 require "./php/fetch.php";
+require "./php/subscribe.php";
 
 echo '<!-- Side Title -->
 <div class="side-title"><p>Collections</p></div> 

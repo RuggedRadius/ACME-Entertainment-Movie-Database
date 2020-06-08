@@ -16,7 +16,7 @@
 <!-- JQuery -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
-
+ 
 
 
 
@@ -40,6 +40,9 @@
 require "./php/header.php";
 require "./php/connection.php";
 require "./php/fetch.php";
+
+
+require "./php/subscribe.php";
 
 
 echo '
