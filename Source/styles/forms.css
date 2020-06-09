@@ -19,6 +19,8 @@ form
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    
 }
 
 form input[type=text] 
@@ -27,7 +29,8 @@ form input[type=text]
     color: white;
     font-size: 2rem;
     border: 1px solid gray;
-    width: 100%;
+    width: 60%;
+    font-family: 'Poppins';
 }
 
 form label 
@@ -35,8 +38,10 @@ form label
     width: 100px;
     /* margin: auto; */
     margin-left: 20px;
-    font-size: 2.5rem;
+    margin-right: 20px;
+    font-size: 1.25rem;
     color: white;
+    font-family: 'Poppins';
 }
 
 .button-holder
@@ -49,12 +54,13 @@ form label
 
 form button 
 {
-    width: 200px;
-    height: 40px;
+    width: auto;
+    height: auto;
     margin: auto;
     cursor: pointer;
     font-size: 2rem;
     margin: 30px 0px 10px 0px;
+    padding: 10px;
 }
 
 
@@ -88,8 +94,9 @@ form button
 
 .form-coupling label {
     display: inline-block;
-    width: 200px;
+    width: auto;
     vertical-align: middle;
+    line-height: 52px;
 }
 
 

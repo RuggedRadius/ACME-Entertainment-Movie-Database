@@ -1,38 +1,58 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.5
--- https://www.phpmyadmin.net/
+-- version 4.0.4.2
+-- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 12, 2020 at 12:52 AM
--- Server version: 5.6.34
--- PHP Version: 7.1.11
+-- Generation Time: Jun 09, 2020 at 06:45 AM
+-- Server version: 5.6.13
+-- PHP Version: 5.4.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `movies`
 --
 CREATE DATABASE IF NOT EXISTS `movies` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `movies`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`, `email`) VALUES
+(2, 'ben', 'test123', 'ben.royans@gmail.com');
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `moviesdb`
 --
 
-CREATE TABLE `moviesdb` (
-  `ID` int(4) DEFAULT NULL,
+CREATE TABLE IF NOT EXISTS `moviesdb` (
+  `ID` int(4) NOT NULL AUTO_INCREMENT,
   `Title` varchar(82) DEFAULT NULL,
-  `Studio` varchar(15) DEFAULT NULL,
+  `Studio` varchar(50) DEFAULT NULL,
   `Status` varchar(12) DEFAULT NULL,
   `Sound` varchar(11) DEFAULT NULL,
   `Versions` varchar(18) DEFAULT NULL,
@@ -43,8 +63,9 @@ CREATE TABLE `moviesdb` (
   `Aspect` varchar(6) DEFAULT NULL,
   `SearchCount` int(4) NOT NULL,
   `AddedList` tinyint(1) NOT NULL,
-  `StarRating` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `StarRating` int(1) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2301 ;
 
 --
 -- Dumping data for table `moviesdb`
@@ -2353,7 +2374,47 @@ INSERT INTO `moviesdb` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, 
 (2296, 'Josie And The Pussycats (Special Edition/ PG Version)', 'Universal', 'Pending', '5.1/DTS', 'LBX, 16:9', '26.98', 'PG', 2001, 'Comedy', '1.85:1', 0, 0, 0),
 (2297, 'Gone with Sunny', 'Panasonic', 'Discontinued', 'ACS', '1.1', '29.00', 'PG', 2003, 'Dance / Ballet', '1', 0, 0, 0),
 (2298, 'The Phantom', 'Warner Brothers', 'TBA', '3.0', '3.1', '35.90', 'PG-13', 2004, 'Action/Adventure', '1.2.3', 27, 1, 4);
-COMMIT;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mylist`
+--
+
+CREATE TABLE IF NOT EXISTS `mylist` (
+  `id` int(9) NOT NULL,
+  `title` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `mylist`
+--
+
+INSERT INTO `mylist` (`id`, `title`) VALUES
+(793, 'Kill Bill: Vol. 1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subscriptions`
+--
+
+CREATE TABLE IF NOT EXISTS `subscriptions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(255) NOT NULL,
+  `surname` varchar(255) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `monthly` tinyint(1) NOT NULL,
+  `burst` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
+
+--
+-- Dumping data for table `subscriptions`
+--
+
+INSERT INTO `subscriptions` (`id`, `firstname`, `surname`, `email`, `monthly`, `burst`) VALUES
+(37, 'Benjamin', 'Royans', 'ben.royans@gmail.com', 1, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
