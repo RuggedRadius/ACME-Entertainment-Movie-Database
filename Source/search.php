@@ -34,10 +34,13 @@ require "./php/subscribe.php";
 <!-- Form -->
 <form id="form-search" action="./searchResults.php" method="GET">
 
+    <h1 style="color: white; text-align: center;">Search</h1> 
+    <br>
+
     <!-- Title -->
     <div class="form-coupling">
     <label for="title" class="form-label">Title:</label>
-    <input type="text" name="title" id="title"><br>
+    <input type="text" name="title" id="title" placeholder="Enter title"><br>
     </div>
 
     <!-- Genre -->

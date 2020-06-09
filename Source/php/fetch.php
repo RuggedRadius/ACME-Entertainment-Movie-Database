@@ -378,7 +378,7 @@ function outputDecadePanel($collectionTitle, $decade)
 function generateImagePanel($genre)
 {
     include "./php/connection.php";
-    $qry = "SELECT * FROM `moviesdb` WHERE `Genre`= '" . $genre . "' ORDER BY RAND() DESC LIMIT 8";
+    $qry = "SELECT * FROM `moviesdb` WHERE `Genre`= '" . $genre . "' ORDER BY RAND() DESC LIMIT 12";
     $result = mysqli_query($dbConnection, $qry);
     while ($row = $result->fetch_assoc()) {
         echo "  

@@ -78,7 +78,7 @@ if (isset($_POST["username"])) {
             
     <!-- Login Button -->
     <div class="button-holder">
-        <button type="submit" form="form-login" value="Submit">Login</button>
+        <button type="submit" form="form-login" value="Submit" style="padding: 10px 80px;">Login</button>
     </div>
 
 </form>

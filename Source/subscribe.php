@@ -280,7 +280,6 @@ function addSubscription()
 
 require "./php/header.php";
 require "./php/connection.php";
-// require "./php/subscribe.php";
 
 // Handle subscription creations and updates
 handleSubscriptions();
@@ -291,24 +290,29 @@ handleSubscriptions();
 <!-- Form -->
 <form id="form-search" action="./subscribe.php" method="POST">
 
+    <h1 style="color: white; text-align: center;">Subscribe</h1> 
+    <br>
+    <p style="color: white; text-align: center; font: 1.5rem Poppins;">Please fill out the form to subscribe to our newsletter!</p> 
+    <br>
+
     <!-- First Name -->
     <div class="form-coupling">
-        <label for="firstname" class="form-label">Given Name:</label>
-        <input type="text" name="firstname" id="firstname">
+        <label for="firstname" class="form-label" style="min-width: 200px">Given Name:</label>
+        <input type="text" name="firstname" id="firstname" placeholder="Enter given name">
         <br>
     </div>
 
     <!-- Surname -->
     <div class="form-coupling">
-        <label for="surname" class="form-label">Surname:</label>
-        <input type="text" name="surname" id="surname">
+        <label for="surname" class="form-label" style="min-width: 200px">Surname:</label>
+        <input type="text" name="surname" id="surname" placeholder="Enter surname">
         <br>
     </div>
 
     <!-- Email -->
     <div class="form-coupling">
-        <label for="email" class="form-label">Email:</label>
-        <input type="text" name="email" id="email">
+        <label for="email" class="form-label" style="min-width: 200px">Email:</label>
+        <input type="text" name="email" id="email" placeholder="Enter email address">
         <br>
     </div>
 
@@ -326,9 +330,7 @@ handleSubscriptions();
         <br>
     </div>
 
-    <br/>
-    <p style="text-align: center; color: white; font-size: 1.5rem; font-family: Poppins;">or</p>
-    <br/>
+    <p style="text-align: center; color: white; font-size: 1rem; font-family: Poppins;">or</p>
 
     <!-- Remove -->
     <div class="form-coupling">    

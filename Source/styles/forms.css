@@ -7,6 +7,8 @@
 
     width: 80%;
     margin: auto;
+    margin-top: 100px;
+    margin-top: 50px;
 
     display: flexbox;
     justify-content: center;
@@ -97,6 +99,7 @@ form button
     width: auto;
     vertical-align: middle;
     line-height: 52px;
+    min-width: 200px;
 }
 
 
