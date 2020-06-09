@@ -29,7 +29,7 @@ form input[type=text]
     color: white;
     font-size: 2rem;
     border: 1px solid gray;
-    width: 60%;
+    width: 100%;
     font-family: 'Poppins';
 }
 
@@ -131,4 +131,12 @@ input[type=checkbox], input[type=radio] {
 
 }
 
+
+@media only screen and (max-height: 900px) {
+    #form-search {
+        margin-top: 250px;
+        margin-bottom: 20px;
+    }
+
+}
 
