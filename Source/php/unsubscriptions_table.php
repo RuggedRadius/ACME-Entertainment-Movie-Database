@@ -29,12 +29,12 @@ $query = "SELECT * FROM `subscriptions`";
 $result = mysqli_query($dbConnection, $query);
 
 // Open table
-echo "<table id='table-admin'>
+echo "<table id='table-admin' >
         <col width='400'>
         <col width='100'>
         <tr>
-            <th>Email Address</th>
-            <th>Action</th>            
+            <th style='font-size: 2rem;'>Email Address</th>
+            <th style='font-size: 2rem;'>Delete From Database</th>            
         </tr>
     ";
 
@@ -47,8 +47,8 @@ echo "<table id='table-admin'>
 // Ouput rows
 while ($row = $result->fetch_assoc()) {
     echo "  <tr>
-                <td>".$row["email"]."</td>
-                <td><a href='./unsubscriptions.php?unsubscribe=".$row["email"]."'><i class='fa fa-edit'></i></a></td>                
+                <td style='font-size: 1.5rem;'>".$row["email"]."</td>
+                <td style='text-align: center; font-size: 2rem;'><a href='./unsubscriptions.php?unsubscribe=".$row["email"]."'><i class='fa fa-edit'></i></a></td>                
             </tr>
         ";
 }
