@@ -31,28 +31,30 @@
  */
 require "./php/header.php";
 require "./php/subscribe.php";
+require "./php/connection.php";
 
 
 if (isset($_POST["username"])) {
-    echo $_POST["username"];
-
-
     // CHECK DATABASE FOR EXISTING USERNAME
-    // ....
+    $username = $_POST["username"];
 
-    // $query = "DELETE FROM `moviesdb` WHERE `ID`='".$movieID."' LIMIT 1";
-    // $result = mysqli_query($dbConnection, $query);
-
-
-    if (isset($_POST["password"])) {
-
-
-        // CHECK DATABASE FOR CORRECT PASSWORD
-        // ...
-
-
-        echo $_POST["password"];
-        echo '<script type="text/javascript">notify("Login successful", 500, "admin.php");</script>';
+    $query = "SELECT * FROM `admin` WHERE `username`='".$username."' LIMIT 1";
+    $result = mysqli_query($dbConnection, $query);
+    $row = mysqli_fetch_assoc($result);
+    if ($row) {
+        // Username was found
+        if (isset($_POST["password"])) {
+            if ($_POST["password"] === $row["password"]) {
+                // Password matches
+                echo '<script type="text/javascript">notify("Login successful", 1000, "admin.php");</script>';
+            } else {
+                // Password does NOT match
+                echo '<script type="text/javascript">notify("Incorrect password", 5000, null);</script>';
+            }
+        }
+    } else {
+        // Username was NOT found
+        echo '<script type="text/javascript">notify("Incorrect username", 5000, null);</script>';
     }
 }
 ?>
