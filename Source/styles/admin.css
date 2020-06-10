@@ -12,14 +12,14 @@
     font-size: 1.5rem;
 
 
-    left: 5vw;
-    width: 90vw;
+    width: 100%;
+    max-width: 100vw;
     margin-top: 130px;
     margin-left: auto; 
     margin-right: auto; 
     margin-bottom: 50px;
 
-
+    table-layout: fixed;
 }
 
 #table-admin tr
@@ -36,11 +36,15 @@
 
 #table-admin th
 {
-    position: -webkit-sticky;
-    position: sticky;
+    /* position: sticky; */
     background: linear-gradient(transparent, black, transparent);
     color: rgb(69, 173 , 170);
     font-size: 1.2rem;
+    word-wrap: break-word;
+
+    writing-mode: vertical-rl;
+    /* text-orientation: upright; */
+    text-orientation: sideways;
 }
 
 #table-admin td
@@ -49,10 +53,41 @@
     /* white-space: nowrap; */
     /* padding: 0px 20px; */
     font-size: 1rem;
+    
 }
 
 #page-wrapper-admin
 {
     overflow: hidden;
-    width: 95vw;
+    width: 100vw;
+}
+
+#dashboard p {
+    width: 100%;
+    text-align: center;
+
+    font-size: 2.5rem;
+
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+
+
+
+
+
+
+@media only screen and (max-width: 1000px) {
+    th.rotate 
+    {    
+        height: 140px;
+        white-space: nowrap;
+    }
+    
+    th.rotate > div {
+    transform: rotate(270deg);
+    width: 30px;
+    }
+
 }

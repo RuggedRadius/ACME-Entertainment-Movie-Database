@@ -6,9 +6,9 @@
     font-size: 2rem;
 
     width: 80%;
-    margin: auto;
-    margin-top: 100px;
-    margin-top: 50px;
+    /* margin: auto; */
+    /* margin-top: 100px; */
+    margin-top: 150px;
 
     display: flexbox;
     justify-content: center;
@@ -18,14 +18,25 @@
 form 
 {
     position: absolute;
-    top: 50%;
+    /* top: 50%; */
     left: 50%;
-    transform: translate(-50%, -50%);
+    /* transform: translate(-50%, -50%); */
+    transform: translateX(-50%);
 
     
 }
 
 form input[type=text] 
+{
+    background: transparent;
+    color: white;
+    font-size: 2rem;
+    border: 1px solid gray;
+    width: 100%;
+    font-family: 'Poppins';
+}
+
+form input[type=password] 
 {
     background: transparent;
     color: white;
@@ -127,19 +138,44 @@ input[type=checkbox], input[type=radio] {
         flex-wrap: wrap;
     }
 
-    #form-search {
+    /* #form-search {
         margin-top: 250px;
-        margin-bottom: 20px;
-    }
-
+        margin-bottom: 150px;
+    } */
 }
 
 
 @media only screen and (max-height: 900px) {
     #form-search {
-        margin-top: 250px;
-        margin-bottom: 20px;
+        /* margin-top: 120px;
+        margin-bottom: 20%; */
+        /* margin-top: 300px; */
+    }
+
+    form {
+        
+        /* transform: translate(-50%, -40%); */
+        margin-bottom: 100px;
     }
 
 }
 
+
+
+.row {
+    display: flex;
+    color: white;
+}
+
+.row div {
+width: 100px;
+
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
+.col {
+    /* display: flex; */
+    color: white;
+    
+}

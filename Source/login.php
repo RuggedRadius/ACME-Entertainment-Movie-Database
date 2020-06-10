@@ -29,8 +29,9 @@
  * @license  http://www.php.net/license/3_01.txt  PHP License 3.01
  * @link     http://pear.php.net/package/PackageName
  */
+
+
 require "./php/header.php";
-require "./php/subscribe.php";
 require "./php/connection.php";
 
 
@@ -46,28 +47,48 @@ if (isset($_POST["username"])) {
         if (isset($_POST["password"])) {
             if ($_POST["password"] === $row["password"]) {
                 // Password matches
-                echo '<script type="text/javascript">notify("Login successful", 1000, "admin.php");</script>';
+               // Start session
+                session_start();
+
+                // Set username
+                $_SESSION["username"] = $_POST["username"];
+
+                echo '<script type="text/javascript">notify("Login successful", 0, "admin.php");</script>';
             } else {
                 // Password does NOT match
                 echo '<script type="text/javascript">notify("Incorrect password", 5000, null);</script>';
+                require "./php/subscribe.php";
+
             }
         }
     } else {
         // Username was NOT found
         echo '<script type="text/javascript">notify("Incorrect username", 5000, null);</script>';
+        require "./php/subscribe.php";
+
     }
 }
+
+
+// require "./php/subscribe.php";
+
 ?>
 
-
+<!-- Side Title -->
 <div class="side-title"><p>Login</p></div>
+
+
 <!-- Form -->
-<form id="form-login" action="./login.php" method="POST">
+<form id="form-search" action="./login.php" method="POST">
+
+    <!-- Heading -->
+    <h1 style="color: white; text-align: center;">Admin Login</h1> 
+    <br>
 
     <!-- Username -->
     <div class="form-coupling">
     <label for="username" class="form-label">Username:</label>
-    <input type="username" name="username" id="username"><br>
+    <input type="text" name="username" id="username"><br>
     </div>
 
     <!-- Password -->
@@ -78,7 +99,7 @@ if (isset($_POST["username"])) {
             
     <!-- Login Button -->
     <div class="button-holder">
-        <button type="submit" form="form-login" value="Submit" style="padding: 10px 80px;">Login</button>
+        <button type="submit" form="form-search" value="Submit" style="padding: 10px 80px;">Login</button>
     </div>
 
 </form>

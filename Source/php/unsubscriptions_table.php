@@ -28,14 +28,18 @@ $query = "SELECT * FROM `subscriptions`";
 // Execute query
 $result = mysqli_query($dbConnection, $query);
 
+// Wrapper
+echo '<div id="page-wrapper-admin">';
+
 // Open table
 echo "<table id='table-admin' >
-        <col width='400'>
-        <col width='100'>
+        <thead>
         <tr>
-            <th style='font-size: 2rem;'>Email Address</th>
-            <th style='font-size: 2rem;'>Delete From Database</th>            
+            <th style='font-size: 2rem; width: 10%;'>Email Address</th>
+            <th style='font-size: 2rem; width: 10%;'>Delete From Database</th>            
         </tr>
+        </thead>
+        <tbody>
     ";
 
 
@@ -54,4 +58,7 @@ while ($row = $result->fetch_assoc()) {
 }
 
 // Close table
-echo "</table";
+echo "</tbody></table>";
+
+// Close wrapper
+echo "</div>";

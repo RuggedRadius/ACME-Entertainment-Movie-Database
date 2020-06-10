@@ -35,6 +35,12 @@
 
 }
 
+#logout:hover {
+    transition-duration: 0.25s;
+    color: rgb(69, 173 , 170);
+    text-shadow: 0px 0px 20px white;
+}
+
 #nav-links
 {
     position: fixed;
@@ -108,11 +114,11 @@
     text-align: center;
 }
 
-@media only screen and (max-width: 550px) {
+/* @media only screen and (max-width: 550px) {
     #nav-links a {
         display: none;
     }
-}
+} */
 
 @media only screen and (min-width: 551px) {
     #nav-links a {

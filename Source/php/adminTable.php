@@ -22,52 +22,34 @@ $result = mysqli_query($dbConnection, $query);
 
 echo '<div id="page-wrapper-admin">';
 
+
+
 // Open table
 echo "<table id='table-admin'>
-        <col width='5%'>
-        <col width='10%'>
-        <col width='10%'>
+        <thead>
+            <tr>
+                <th class='rotate' style='width: 3%;'><div><span>ID</span></div></th>
+                <th class='rotate' style='width: 20%;'><div><span>Title</span></div></th>
+                <th class='rotate' style='width: 5%;'><div><span>Studio</span></div></th>
 
-        <col width='10%'>
-        <col width='5%'>
-        <col width='5%'>
+                <th class='rotate' style='width: 5%;'><div><span>Status</span></div></th>
+                <th class='rotate' style='width: 5%;'><div><span>Sound</span></div></th>
+                <th class='rotate' style='width: 5%;'><div><span>Versions</span></div></th>
 
-        <col width='5%'>
-        <col width='5%'>
-        <col width='5%'>
+                <th class='rotate' style='width: 5%;'><div><span>RRP</span></div></th>
+                <th class='rotate' style='width: 5%;'><div><span>Rating</span></div></th>
+                <th class='rotate' style='width: 5%;'><div><span>Year</span></div></th>
 
-        <col width='5%'>
-        <col width='5%'>
-        <col width='5%'>
+                <th class='rotate' style='width: 5%;'><div><span>Genre</span></div></th>
+                <th class='rotate' style='width: 5%;'><div><span>Aspect</span></div></th>
+                <th class='rotate' style='width: 2%;'><div><span>Popularity</span></div></th>
 
-        <col width='5%'>
-        <col width='5%'>
-        <col width='5%'>
-
-        <col width='5%'>
-        <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Studio</th>
-
-            <th>Status</th>
-            <th>Sound</th>
-            <th>Versions</th>
-
-            <th>RRP</th>
-            <th>Rating</th>
-            <th>Year</th>
-
-            <th>Genre</th>
-            <th>Aspect</th>
-            <th>Popularity</th>
-
-            <th><i class='fa fa-heart'></i></th>
-            <th>Star Rating</th>
-            <th>Modify</th>
-
-            
-        </tr>
+                <th style='width: 3%;'><i class='fa fa-heart'></i></th>
+                <th class='rotate' style='width: 3%;'><div><span>Star Rating</span></div></th>
+                <th class='rotate' style='width: 4%;'><div><span>Modify</span></div></th>            
+            </tr>
+        </thead>
+        <tbody>
     ";
 
     // Delete Row removed for simplicity
@@ -100,6 +82,7 @@ while ($row = $result->fetch_assoc()) {
 }
 
 // Close table
-echo "</table";
+echo "      </tbody>
+        </table>
+    </div>";
 
-echo "</div>";

@@ -122,6 +122,7 @@
     display: flow-root;
     flex-wrap: wrap;
 
+    margin-bottom: 10px;
 
     padding: 50px;
 
@@ -137,6 +138,10 @@
     box-shadow: 0px 0px 50px black;
     border: 2px solid white;
     border-radius: 20px;
+
+
+    /* 3D Rotate */
+    perspective: 1200px;
 }
 
 .movie-details-poster {
@@ -218,7 +223,26 @@
 
     max-width: 360px;
     max-height: 540px;
+
+    
 }
+
+/* WebKit and Opera browsers */
+@-webkit-keyframes spinner {
+from { -webkit-transform: rotateY(0deg);    }
+to   { -webkit-transform: rotateY(-360deg); }
+}
+
+/* all other browsers */
+@keyframes spinner {
+
+
+0% {transform: rotateY(0deg);}
+25% {transform: rotateY(-90deg);}
+75% { transform: rotateY(90deg);}
+100% { transform: rotateY(0deg);}
+}
+
 
 .movie-poster-large
 {
@@ -228,6 +252,18 @@
     box-shadow: 0px 0px 50px white;
     display: block;
     margin: 0 auto 50px auto;
+
+    animation: spinner 5s linear infinite;
+
+    transition-duration: 1s;
+}
+
+.movie-poster-large:hover
+{
+    width: 504px;
+    height: 756px;
+
+    animation: none;
 }
 
 /* iframe

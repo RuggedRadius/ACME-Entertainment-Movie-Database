@@ -1,4 +1,8 @@
 <?php
+
+
+
+// Output html head section
 echo '
 <title>Captis</title>
 

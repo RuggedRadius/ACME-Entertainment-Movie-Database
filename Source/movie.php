@@ -32,7 +32,6 @@ require "./php/connection.php";
 require "./php/header.php";
 require "./php/fetch.php";
 
-
 require "./php/subscribe.php";
 
 // Get local movie ID

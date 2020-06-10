@@ -27,8 +27,18 @@
  * @license  http://www.php.net/license/3_01.txt  PHP License 3.01
  * @link     http://pear.php.net/package/PackageName
  */
-require "./php/headerAdmin.php";
-require "./php/unsubscriptions_table.php";
+
+session_start();
+
+if (isset($_SESSION["username"]))
+{
+    require "./php/headerAdmin.php";
+    require "./php/unsubscriptions_table.php";
+}
+else
+{
+    echo '<script type="text/javascript">notify("Not logged in", 1000, "login.php");</script>';
+}
 ?>
 
 </body>

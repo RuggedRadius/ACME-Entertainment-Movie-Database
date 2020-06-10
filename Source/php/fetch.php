@@ -168,16 +168,19 @@ function outputMovieDetails($qry)
             ";
 
 
-
-
-
-
-
-
-
-        // Edit buttons
-
-
+            // Edit buttons (TEMP!!)
+            // echo "
+            // <div id='edit-btns'>
+            // <div class='btn-edit'>
+            // <a href='./modifyMovie.php?id=" . $row["ID"] . "&download=true' id='auto-update'><i class='fa fa-download'></i></a>
+            // </div>
+            // <div class='btn-edit'>
+            // <a href='./modifyMovie.php?id=" . $row["ID"] . "&download=true&auto=true'><i class='fa fa-forward'></i></a>
+            // </div>
+            // <div class='btn-edit'>
+            // <a href='./modifyMovie.php?id=" . $row["ID"] . "&delete=true'><i class='fa fa-trash'></i></a>
+            // </div>
+            // </div>";
 
 
 
