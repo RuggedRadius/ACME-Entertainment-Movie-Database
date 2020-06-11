@@ -87,20 +87,34 @@ function emailRequestToAdmins($userEmailAddr)
 
 function ValidateEmail($email)
 {
-    // $pattern = "/^[a-zA-Z0-9\.]+@(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.?[a-zA-Z0-9\.]+\.(com|net|com.au)$/";
-    // $pattern = "^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*@((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$";
+    // Determine email validation regex pattern
     $pattern = "/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g";
+
+    // Check for empty
+    if (empty($name)) {
+        return false;
+    }
+
     return (bool) preg_match($pattern, $email);
 }
 
 function ValidateName($name)
 {
+    // Split name into char array
     $chars = str_split($name);
+
+    // Assess each character
     foreach ($chars as $char) {
         if (!ValidateChar($char)) {
             return false;
         }
     }
+
+    // Check for empty
+    if (empty($name)) {
+        return false;
+    }
+
     return true;
 }
 
@@ -112,9 +126,9 @@ function ValidateChar($char)
     }
 
     // White spaces
-    if (ctype_space($char)) {
-        return true;
-    }
+    // if (ctype_space($char)) {
+    //     return true;
+    // }
 
     // Apostrophes
     if (ord($char) === 39) {
@@ -218,32 +232,51 @@ function addSubscription()
         $boolBurst = 1;
     }
 
+    // Sanitise inputs
+    filter_var($givenName, FILTER_SANITIZE_STRING);
+    filter_var($surname, FILTER_SANITIZE_STRING);
+    filter_var($emailAddress, FILTER_SANITIZE_EMAIL);
+
     // Filter name and email
     $validGivenName = ValidateName($givenName);
     $validSurname = ValidateName($surname);
     $validEmail = ValidateEmail($emailAddress);
 
-    if ($validGivenName === true && $validSurname === true) {
-        if (filter_var($emailAddress, FILTER_VALIDATE_EMAIL)) {
-            // Create new subscription
-            $query = "  INSERT INTO `subscriptions` (`email`, `firstname`, `surname`, `monthly`, `burst`)
-                    VALUES ('" . $emailAddress . "', '" . $givenName . "', '".$surname."', '" . $boolMonthly . "', '" . $boolBurst . "');";
+    if ($validGivenName === true) 
+    {
+        if ($validSurname === true) 
+        {
+            if (filter_var($emailAddress, FILTER_VALIDATE_EMAIL)) 
+            {
+                // Create new subscription
+                $query = "  INSERT INTO `subscriptions` (`email`, `firstname`, `surname`, `monthly`, `burst`)
+                        VALUES ('" . $emailAddress . "', '" . $givenName . "', '".$surname."', '" . $boolMonthly . "', '" . $boolBurst . "');";
 
-            // import connection
-            require './php/connection.php';
+                // import connection
+                require './php/connection.php';
 
-            // Execute statement
-            $result = mysqli_query($dbConnection, $query);
+                // Execute statement
+                $result = mysqli_query($dbConnection, $query);
 
-            // Show success feedback to user
-            echo '<script type="text/javascript">notify("Subscription created", 3000, null);</script>';
-        } else {
-            // Show success feedback to user
-            echo '<script type="text/javascript">notify("ERROR: Invalid email address", 3000, null);</script>';
+                // Show success feedback to user
+                echo '<script type="text/javascript">notify("Subscription created", 3000, null);</script>';
+            } 
+            else 
+            {
+                // Show success feedback to user
+                echo '<script type="text/javascript">notify("ERROR: Invalid email address", 3000, null);</script>';
+            }
         }
-    } else {
-        // Show success feedback to user
-        echo '<script type="text/javascript">notify("ERROR: Invalid name(s)", 3000, null);</script>';
+        else
+        {
+            // Show error feedback to user
+            echo '<script type="text/javascript">notify("ERROR: Invalid surname", 3000, null);</script>';
+        }
+    } 
+    else 
+    {
+        // Show error feedback to user
+        echo '<script type="text/javascript">notify("ERROR: Invalid given name", 3000, null);</script>';
     }
 }
 ?>
@@ -265,6 +298,7 @@ function addSubscription()
 
 <body>
 <script type="text/javascript" src="./js/notification.js"></script>
+<script type="text/javascript" src="./js/subscribe.js"></script>
 <?php
 /**
  * Short description for file
@@ -315,17 +349,18 @@ handleSubscriptions();
         <input type="text" name="email" id="email" placeholder="Enter email address">
         <br>
     </div>
+    <br>
 
     <!-- Monthly -->
     <div class="form-coupling">    
-        <input type="checkbox" id="monthly" name="monthly" value="monthly">
+        <input type="checkbox" id="monthly" name="monthly" value="monthly" checked onclick="clearUnsubscribeCheck()"> 
         <label for="monthly" class="form-label">Monthly Newsletter</label>
         <br>
     </div>
 
     <!-- Burst -->
     <div class="form-coupling">    
-        <input type="checkbox" id="burst" name="burst" value="burst">
+        <input type="checkbox" id="burst" name="burst" value="burst" checked onclick="clearUnsubscribeCheck()">
         <label for="burst" class="form-label">Burst Notifcations</label>
         <br>
     </div>
@@ -334,14 +369,14 @@ handleSubscriptions();
 
     <!-- Remove -->
     <div class="form-coupling">    
-        <input type="checkbox" id="remove" name="remove" value="remove">
+        <input type="checkbox" id="remove" name="remove" value="remove" onclick="unsubscribe()">
         <label for="remove" class="form-label" style="color: red;">Unsubscribe</label>
         <br>
     </div>
 
     <!-- Login Button -->
     <div class="button-holder">
-        <button type="submit" form="form-search" value="Submit">Update My Subscription</button>
+        <button id="btn-submit" name="btn-submit" type="submit" form="form-search" value="Submit" style="width: 300px;">Subscribe</button>
     </div>
 
 </form>
