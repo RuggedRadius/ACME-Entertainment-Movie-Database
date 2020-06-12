@@ -58,18 +58,18 @@ form input[type=password]
     width: 250px;
     padding: 10px;
     margin: 1em auto;
-  }
-  p {
-    margin: 1.5em 0;
+}
+form p {
+    margin: 5% 0;
     padding: 0;
-  }
-  input[type="checkbox"] {
+}
+input[type="checkbox"] {
     visibility: hidden;
-  }
-  label {
+}
+label {
     cursor: pointer;
-  }
-  input[type="checkbox"] + label:before {
+}
+input[type="checkbox"] + label:before {
     border: 1px solid #333;
     content: "\00a0";
     display: inline-block;

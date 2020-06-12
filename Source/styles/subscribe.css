@@ -89,7 +89,7 @@
 
     font-size: 2.5rem;
 
-    transform: rotate(-45deg) translateX(-40px);
+    transform: rotate(-45deg) translate(-10px, -50px);
 
     z-index: 100001;
     color: white;
