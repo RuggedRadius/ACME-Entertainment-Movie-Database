@@ -32,7 +32,9 @@
  */
     
 require "./php/header.php";
+// require "./php/connection.php";
 require "./php/fetch.php";
+
 $qry = "SELECT * FROM `myList`";
 outputPopular($qry);
 ?>

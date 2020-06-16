@@ -33,7 +33,7 @@ require "./php/header.php";
 require "./php/fetch.php";
 require "./php/connection.php";
 
-$qry = "SELECT * FROM `moviesdb` WHERE `StarRating`>0 ORDER BY `StarRating` DESC LIMIT 100";
+$qry = "SELECT * FROM `moviesdb` WHERE `StarRating`>0 ORDER BY `StarRating` DESC LIMIT 10";
 
 // Open container div
 echo "<div id='movies-wrapper'>";
@@ -42,7 +42,8 @@ echo "<div id='movies-wrapper'>";
 $result = mysqli_query($dbConnection, $qry);
 
     // Display movie boxes
-while ($row = $result->fetch_assoc()) {
+while ($row = $result->fetch_assoc()) 
+{
     // Output movie box display
     echo "<a href='./movie.php?id=".$row["ID"]."' id='".$row["ID"]."'>";
     echo "<div class='movie-display' id='".$row["Title"]."'>";
@@ -66,7 +67,6 @@ while ($row = $result->fetch_assoc()) {
 }
     // Close container div
     echo "</div>";
-
 ?>
 
 <script type="text/javascript" src="./js/fetchImage.js"></script>

@@ -30,9 +30,13 @@ function outputMovieDetails($qry)
     while ($row = $result->fetch_assoc()) {
 
         // Update rating
-        if (isset($_GET["rated"])) {
+        if (isset($_GET["rated"])) 
+        {
+            // Get rating from post
             $rating = $_GET["rated"];
-            if ($rating != null) {
+
+            if ($rating != null) 
+            {
                 // Call method to update rating
                 updateRating($row["ID"], $rating);
 
@@ -218,6 +222,7 @@ function outputPopular($qry)
 
     // Filter for no results
     $rowCount = mysqli_num_rows($result);
+
     if ($rowCount == 0) {
         // Show error
         echo "<p style='color: red; font-size: 3rem;'>0 results found</p>";
@@ -226,10 +231,10 @@ function outputPopular($qry)
         // Display movie boxes
         while ($row = $result->fetch_assoc()) {
             // Output movie box display
-            echo "<a href='./movie.php?id=".$row["ID"]."' id='".$row["ID"]."'>";
-            echo "<div class='movie-display' id='".$row["Title"]."'>";
+            echo "<a href='./movie.php?id=".$row["id"]."' id='".$row["id"]."'>";
+            echo "<div class='movie-display' id='".$row["title"]."'>";
             echo "<image class='movie-poster' src='' width='100px'></image>";
-            echo "<h1 class='title'>" . $row["Title"] . "</h1>";
+            echo "<h1 class='title'>" . $row["title"] . "</h1>";
             // echo "<p>".$row["Genre"]."</p>";
             echo "</div>";
             echo "</a>";
@@ -253,10 +258,23 @@ function updateRating($movieID, $rating)
     // Connect using php script
     include "connection.php";
 
-    // Formulate query
+    // Upate star rating
     $query = "UPDATE `moviesdb` SET `StarRating` = " . $rating . " WHERE ID = " . $movieID;
-    
-    // Execute query
+    $result = mysqli_query($dbConnection, $query);
+
+
+
+    // Get global rating
+    $query = "SELECT * FROM `moviesdb` WHERE `ID` = " . $movieID;
+    $result = mysqli_query($dbConnection, $query);
+    $row = mysqli_fetch_assoc($result);
+    $globalRating = $row["globalrating"];
+
+
+
+
+    // Update global rating
+    $query = "UPDATE `moviesdb` SET `globalrating` = ".$globalRating." + ".$rating." WHERE ID = ".$movieID." LIMIT 1";
     $result = mysqli_query($dbConnection, $query);
 }
 

@@ -187,8 +187,6 @@
 
     max-width: 360px;
     max-height: 540px;
-
-    
 }
 
 /* WebKit and Opera browsers */
@@ -327,7 +325,7 @@ td {
 .side-title
 {
     position: fixed;
-    left: -420px;
+    left: -180px;
     top: 50%;
     width: 600px;
     height: 300px;

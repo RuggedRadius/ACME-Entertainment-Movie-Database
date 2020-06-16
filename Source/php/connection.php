@@ -41,5 +41,10 @@ default:
     break;
 }
 
+// Turn on debugging
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+
+
 // Connect to Database
 $dbConnection = mysqli_connect($server, $username, $password, $db);

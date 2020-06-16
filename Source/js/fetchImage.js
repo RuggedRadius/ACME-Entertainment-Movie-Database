@@ -5,9 +5,9 @@
 var base = "https://api.themoviedb.org/3/search/movie?api_key=";
 var imgURLBase = "https://image.tmdb.org/t/p/w600_and_h900_bestv2";
 var api_key = "f2e15980f239d4c99375ace9706067c5";
+
+
 var movies = document.getElementsByClassName("movie-display");
-
-
 console.log("Loading " + movies.length + " image(s)...");
 for (var i = 0; i < movies.length; i++) {
 
@@ -16,6 +16,30 @@ for (var i = 0; i < movies.length; i++) {
 
     // Get image
     var img = movies[i].getElementsByClassName("movie-poster")[0];
+
+    // Fix query
+    var query = FixQuery(movieTitle);
+    console.log("Searching for movie: " + query);
+
+    // Generate request
+    var request = GenerateRequest(query);
+
+    // Get and load image
+    GetImageURLbyQuery(request, img);
+}
+
+
+
+
+var movies = document.getElementsByClassName("movie-display-top10");
+console.log("Loading TOP10: " + movies.length + " image(s)...");
+for (var i = 0; i < movies.length; i++) {
+
+    // Get title
+    var movieTitle = movies[i].id;
+
+    // Get image
+    var img = movies[i].getElementsByClassName("movie-poster-top10")[0];
 
     // Fix query
     var query = FixQuery(movieTitle);

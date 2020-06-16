@@ -1,0 +1,231 @@
+#movies-wrapper-top10 {
+    width: 36vw;
+    height: 80vh;
+
+    /* position: absolute; */
+    /* left: 50%; */
+    /* top: 15%; */
+    /* transform: translateX(-50%); */
+    margin: auto;
+    margin-top: 150px;
+
+    /* display: flex;
+    flex-wrap: wrap; */
+    justify-content: center;
+}
+
+.movie-display-top10 {
+
+    width: 18vw;
+    height: auto;
+
+    
+    /* padding: 15px; */
+
+    margin: auto;
+    margin-bottom: 80px;
+
+    color: white;
+    /* border: 2px solid white; */
+    z-index: 30;
+
+    text-align: center;
+
+    overflow: visible;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    position: relative;
+
+    box-shadow: 0px 0px 5px 5px rgb(69, 173 , 170);
+}
+
+.movie-display-top10:hover {
+    box-shadow: 0px 0px 15px 15px rgb(69, 173, 170);
+    transition-duration: 0.25s;
+
+}
+
+/* .movie-display-top10 h1 {
+    font-size: 5vw;
+} */
+
+.popular-label-top10
+{
+    
+    
+    position: absolute;
+
+    z-index: 11;
+    /* background: radial-gradient(white, transparent); */
+    background: rgb(69, 173 , 170);
+    background: transparent;
+    border-radius: 15px 15px 15px 0px;
+    padding: 10px 0px 10px 20px;
+    
+    /* height: 6.5vw; */
+    /* width: 6.5vw; */
+
+    /* box-shadow: 0px 0px 10px white; */
+
+
+    top: -50px;
+    left: -20vw;
+    color: transparent;
+    font-size: 20vw;
+    line-height: 20vw;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgb(69, 173 , 170);
+}
+
+.title {
+    width: 100%;
+}
+
+.title-movement {
+    position: absolute;
+
+    bottom: 30px;
+    right: -5vw;
+
+    width: 7vw;
+    height: 7vw;
+    line-height: 7.5vw;
+
+
+
+    /* box-shadow: 0px 0px 10px 10px rgb(69, 173 , 170); */
+    
+    font-size: 5vw;
+    
+    
+
+    margin-right: 10px;
+
+    /* animation: glow 2s linear infinite; */
+}
+
+.title-movement {    
+    position: absolute;
+
+    background: black;
+
+    border-radius: 50%;
+
+    border: 1px solid white;
+
+    bottom: -2.5vw;
+    right: -5vw;
+
+    padding: 2px;
+    
+    /* width: 3vw; */
+    height: 3vw;
+    line-height: 3.25vw;    
+
+    /* padding: 10px; */
+
+    /* box-shadow: 0px 0px 10px 10px rgb(69, 173 , 170); */
+    
+    font-size: 2vw;
+    
+    margin-right: 10px;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0px 0px 2px 2px white;
+    }
+
+    50% {
+        box-shadow: 0px 0px 7px 7px white;
+    }
+
+    100% {
+        box-shadow: 0px 0px 2px 2px white;
+    }
+}
+
+.top10-genre-label {
+    position: absolute;
+}
+
+.movie-poster-top10
+{
+    width: 100%;
+    height: 100%;
+
+    /* margin: auto; */
+    /* margin-bottom: 50px; */
+    overflow: hidden;
+
+    max-width: 18vw; 
+    max-height: 27vw; 
+}
+
+@media only screen and (min-width: 1200px) {
+    #movies-wrapper-top10 {
+        width: 96vw;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 60px;
+    }
+
+    .movie-display-top10 {
+        margin: 4vw 8vw;
+        max-width: 10vw;
+    }
+
+    .popular-label-top10
+    {
+        /* font-size: 5vw;
+        width: 3vw;
+        height: 3vw;
+        line-height: 3.5vw;
+        left: -5vw;
+        color: rgb(69, 173 , 170);
+        box-shadow: none; */
+        left: -10vw;
+    }
+
+    .title-movement {    
+        bottom: -2.5vw;
+        right: -5vw;
+    
+        /* width: 3vw; */
+        height: 3vw;
+        line-height: 3.25vw;    
+
+        /* padding: 10px; */
+    
+        /* box-shadow: 0px 0px 10px 10px rgb(69, 173 , 170); */
+        
+        font-size: 2vw;
+        
+        margin-right: 10px;
+    }
+}
+
+.popular-label-top10::before {
+    background: rgb(69, 173 , 170);
+    background: transparent;
+    border-radius: 15px 15px 15px 0px;
+    
+    /* height: 6.5vw; */
+    /* width: 6.5vw; */
+
+    /* box-shadow: 0px 0px 10px white; */
+
+
+    top: -50px;
+    left: -20vw;
+    color: transparent;
+    font-size: 24vw;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgb(255, 166, 0);
+    /* -webkit-text-stroke-color: rgb(69, 173 , 170); */
+
+
+    /* content: attr(id); */
+}

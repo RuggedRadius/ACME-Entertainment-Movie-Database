@@ -17,6 +17,7 @@ echo '
 <link href="./styles/subscribe.css" rel="stylesheet">
 <link href="./styles/modify_movie.css" rel="stylesheet">
 <link href="./styles/star_rating.css" rel="stylesheet">
+<link href="./styles/top10.css" rel="stylesheet">
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">

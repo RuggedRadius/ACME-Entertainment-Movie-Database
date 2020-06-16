@@ -55,9 +55,9 @@ else
         $newAddedList = $_GET["AddedList"];
         $newStarRating = $_GET["StarRating"];
         $query = "INSERT INTO 
-            `moviesdb` (`Title`, `Studio`, `Status`, `Sound`, `Versions`, `RecRetPrice`, `Rating`, `Year`, `Genre`, `Aspect`, `SearchCount`, `AddedList`, `StarRating`)
+            `moviesdb` (`Title`, `Studio`, `Status`, `Sound`, `Versions`, `RecRetPrice`, `Rating`, `Year`, `Genre`, `Aspect`, `SearchCount`, `AddedList`, `StarRating`, `globalrating`)
         VALUES 
-            ('".$newTitle."', '".$newStudio."', '".$newStatus."', '".$newSound."', '".$newVersions."', '".$newRRP."', '".$newRating."', '".$newYear."', '".$newGenre."', '".$newAspect."', '".$newSearchCount."', '".$newAddedList."', '".$newStarRating."')";
+            ('".$newTitle."', '".$newStudio."', '".$newStatus."', '".$newSound."', '".$newVersions."', '".$newRRP."', '".$newRating."', '".$newYear."', '".$newGenre."', '".$newAspect."', '".$newSearchCount."', '".$newAddedList."', '".$newStarRating."', '0')";
 
         echo "<script>$query</script>";
         $result = mysqli_query($dbConnection, $query);
@@ -143,8 +143,9 @@ else
         <input type="text" name="StarRating" id="StarRating" width="200px" value="0">
         </div>
         
-        <input type="hidden" name="SearchCount" id="SearchCount" width="200px" value="0">
-        <input type="hidden" name="AddedList" id="AddedList" width="200px" value="0">
+        <input type="hidden" name="SearchCount" id="SearchCount" value="0">
+        <input type="hidden" name="AddedList" id="AddedList" value="0">
+        <input type="hidden" name="globalrating" id="globalrating" value="0">
 
     </tr>
     </table>

@@ -281,7 +281,7 @@ while ($row = $result->fetch_assoc()) {
     echo "
         <div id='edit-btns'>
         <div class='btn-edit'>
-        <a href='./modifyMovie.php?id=" . $row["ID"] . "' id='auto-update'><i class='fa fa-download'></i></a>
+        <a href='./modifyMovie.php?id=" . $row["ID"] . "&download=true' id='auto-update'><i class='fa fa-download'></i></a>
         </div>
         <div class='btn-edit'>
         <a href='./modifyMovie.php?id=" . $row["ID"] . "&download=true&auto=true'><i class='fa fa-forward'></i></a>
