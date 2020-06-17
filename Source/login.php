@@ -47,8 +47,10 @@ if (isset($_POST["username"])) {
         if (isset($_POST["password"])) {
             if ($_POST["password"] === $row["password"]) {
                 // Password matches
-               // Start session
+                // Start session
                 session_start();
+
+                $_SESSION["loggedIn"] = true;
 
                 // Set username
                 $_SESSION["username"] = $_POST["username"];
@@ -58,14 +60,12 @@ if (isset($_POST["username"])) {
                 // Password does NOT match
                 echo '<script type="text/javascript">notify("Incorrect password", 5000, null);</script>';
                 require "./php/subscribe.php";
-
             }
         }
     } else {
         // Username was NOT found
         echo '<script type="text/javascript">notify("Incorrect username", 5000, null);</script>';
         require "./php/subscribe.php";
-
     }
 }
 
@@ -101,7 +101,7 @@ if (isset($_POST["username"])) {
     <div class="button-holder">
         <button type="submit" form="form-search" value="Submit" style="padding: 10px 80px;">Login</button>
     </div>
-
+    <a href="./adminCreateAccount.php"><p style="text-align: center; color: rgb(69, 173 , 170);">Click here to create a new admin account</p></a>
 </form>
 
 </body>

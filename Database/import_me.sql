@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 16, 2020 at 12:54 AM
+-- Generation Time: Jun 17, 2020 at 06:32 AM
 -- Server version: 5.6.13
 -- PHP Version: 5.4.17
 
@@ -25,6 +25,29 @@ USE `movies`;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `accountcodes`
+--
+
+CREATE TABLE IF NOT EXISTS `accountcodes` (
+  `Code` varchar(6) NOT NULL,
+  `Expired` tinyint(1) NOT NULL DEFAULT '0',
+  UNIQUE KEY `Code` (`Code`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `accountcodes`
+--
+
+INSERT INTO `accountcodes` (`Code`, `Expired`) VALUES
+('AZEBWD', 0),
+('CJAGHH', 0),
+('LSZBJI', 0),
+('RTQWPN', 1),
+('SDHIJX', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `admin`
 --
 
@@ -34,15 +57,14 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `password` varchar(50) NOT NULL,
   `email` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `email`) VALUES
-(2, 'ben', 'test123', 'ben.royans@gmail.com'),
-(3, 'root', 'usbw', 'derp@derp.com');
+(4, 'billybob', 'Supersecure88', 'ben.royans@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -112,7 +134,7 @@ INSERT INTO `moviesdb` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, 
 (40, 'American Graffiti', 'Universal Pictures', 'Released', 'SUR', 'LBX, 16:9', '29.98', 'PG', 1973, 'Comedy', '2.35:1', 2, 0, 0, 0),
 (41, 'American History X', 'New Line Cinema', 'Released', '5.1', 'LBX, 16:9', '24.98', 'R', 1998, 'Drama', '1.85:1', 2, 0, 0, 0),
 (42, 'Milo and Otis', 'Fuji Television Network', 'Released', '1.0', '4:3', '24.98', 'NR', 1986, 'Adventure', '1.33:1', 2, 0, 0, 0),
-(43, 'Gamer', 'Lionsgate', 'Released', '1.0', '4:3', '24.98', 'NR', 2009, 'Action', '1.33:1', 1, 0, 0, 0),
+(43, 'Gamer', 'Lionsgate', 'Released', '1.0', '4:3', '24.98', 'NR', 2009, 'Action', '1.33:1', 2, 0, 0, 0),
 (44, 'Ghostbusters', 'Universal', 'Out', '5.1', 'LBX, 16:9', '24.98', 'R', 1999, 'Science Fiction', '1.85:1', 3, 0, 0, 0),
 (45, 'Ghostbusters II', 'Universal', 'Out', '5.1', 'LBX, 16:9', '24.98', 'NR', 1999, 'Science Fiction', '1.85:1', 10, 0, 3, 8),
 (46, 'American President', 'Warner Brothers', 'Out', '5.1', 'LBX', '19.98', 'PG-13', 1995, 'Comedy', '2.35:1', 0, 0, 0, 0),
@@ -1700,7 +1722,7 @@ INSERT INTO `moviesdb` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, 
 (1650, 'Art of War', 'Warner Brothers', 'Out', '5.1', 'LBX', '24.95', 'R', 2000, 'Action/Adventure', '2.35:1', 0, 0, 0, 0),
 (1651, 'Seven', 'New Line', 'Out', '5.1/DTS 6.1', 'LBX, 16:9', '29.95', 'R', 1995, 'Drama', '2.40:1', 0, 0, 0, 0),
 (1652, 'Autumn In New York', 'MGM/UA', 'Out', '5.1', 'LBX, 16:9', '26.98', 'PG-13', 2000, 'Drama', '1.85:1', 0, 0, 0, 0),
-(1653, 'Warcraft', 'Universal', 'Out', '2.0', '4:3', '24.95', 'NR', 2016, 'Fantasy', '1.33:1', 4, 0, 5, 0),
+(1653, 'Warcraft', 'Universal', 'Out', '2.0', '4:3', '24.95', 'NR', 2016, 'Fantasy', '1.33:1', 9, 0, 5, 10),
 (1654, 'Bring It On', 'Universal', 'Out', '5.1/DTS', 'LBX, 16:9', '26.98', 'PG-13', 2000, 'Comedy', '1.85:1', 2, 0, 0, 0),
 (1655, 'MVP: Most Valuable Primate', 'Warner Brothers', 'Out', '2.0', '4:3', '24.98', 'PG', 2000, 'Family', '1.33:1', 2, 0, 0, 0),
 (1656, 'Time Machine (DVD Only)', 'Warner Brothers', 'Out', '5.1', 'LBX, 16:9', '24.98', 'NR', 1960, 'Science Fiction', '1.85:1', 0, 1, 0, 0),
@@ -2343,15 +2365,15 @@ INSERT INTO `moviesdb` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, 
 --
 
 CREATE TABLE IF NOT EXISTS `mylist` (
-  `id` int(9) NOT NULL,
-  `title` varchar(255) NOT NULL
+  `ID` int(9) NOT NULL,
+  `Title` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `mylist`
 --
 
-INSERT INTO `mylist` (`id`, `title`) VALUES
+INSERT INTO `mylist` (`ID`, `Title`) VALUES
 (793, 'Kill Bill: Vol. 1'),
 (664, 'Sonic the Hedgehog'),
 (2273, 'Ex Machina');
@@ -2420,7 +2442,9 @@ INSERT INTO `top10history` (`datetime`, `id1`, `id2`, `id3`, `id4`, `id5`, `id6`
 ('2020-06-16 07:32:18', 2081, 1267, 1757, 667, 2158, 1330, 2273, 1059, 45, 1),
 ('2020-06-16 07:42:19', 2081, 1267, 1757, 2158, 667, 1330, 2273, 1059, 45, 1),
 ('2020-06-16 08:34:00', 2081, 1267, 1757, 2158, 2164, 667, 2273, 1330, 1059, 45),
-('2020-06-16 08:34:48', 2081, 2164, 1267, 1757, 2158, 667, 2273, 1330, 1059, 45);
+('2020-06-16 08:34:48', 2081, 2164, 1267, 1757, 2158, 667, 2273, 1330, 1059, 45),
+('2020-06-16 11:17:50', 2081, 2164, 1267, 1757, 2158, 667, 1330, 2273, 1059, 45),
+('2020-06-16 11:18:10', 2081, 2164, 1267, 1757, 2158, 1653, 667, 2273, 1330, 1059);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

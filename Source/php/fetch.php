@@ -30,13 +30,11 @@ function outputMovieDetails($qry)
     while ($row = $result->fetch_assoc()) {
 
         // Update rating
-        if (isset($_GET["rated"])) 
-        {
+        if (isset($_GET["rated"])) {
             // Get rating from post
             $rating = $_GET["rated"];
 
-            if ($rating != null) 
-            {
+            if ($rating != null) {
                 // Call method to update rating
                 updateRating($row["ID"], $rating);
 
@@ -172,19 +170,19 @@ function outputMovieDetails($qry)
             ";
 
 
-            // Edit buttons (TEMP!!)
-            // echo "
-            // <div id='edit-btns'>
-            // <div class='btn-edit'>
-            // <a href='./modifyMovie.php?id=" . $row["ID"] . "&download=true' id='auto-update'><i class='fa fa-download'></i></a>
-            // </div>
-            // <div class='btn-edit'>
-            // <a href='./modifyMovie.php?id=" . $row["ID"] . "&download=true&auto=true'><i class='fa fa-forward'></i></a>
-            // </div>
-            // <div class='btn-edit'>
-            // <a href='./modifyMovie.php?id=" . $row["ID"] . "&delete=true'><i class='fa fa-trash'></i></a>
-            // </div>
-            // </div>";
+        // Edit buttons (TEMP!!)
+        // echo "
+        // <div id='edit-btns'>
+        // <div class='btn-edit'>
+        // <a href='./modifyMovie.php?id=" . $row["ID"] . "&download=true' id='auto-update'><i class='fa fa-download'></i></a>
+        // </div>
+        // <div class='btn-edit'>
+        // <a href='./modifyMovie.php?id=" . $row["ID"] . "&download=true&auto=true'><i class='fa fa-forward'></i></a>
+        // </div>
+        // <div class='btn-edit'>
+        // <a href='./modifyMovie.php?id=" . $row["ID"] . "&delete=true'><i class='fa fa-trash'></i></a>
+        // </div>
+        // </div>";
 
 
 
@@ -230,11 +228,12 @@ function outputPopular($qry)
     } else {
         // Display movie boxes
         while ($row = $result->fetch_assoc()) {
+            // echo "<script>alert('".var_dump($row)."')</script>";
             // Output movie box display
-            echo "<a href='./movie.php?id=".$row["id"]."' id='".$row["id"]."'>";
-            echo "<div class='movie-display' id='".$row["title"]."'>";
+            echo "<a href='./movie.php?id=".$row["ID"]."' id='".$row["ID"]."'>";
+            echo "<div class='movie-display' id='".$row["Title"]."'>";
             echo "<image class='movie-poster' src='' width='100px'></image>";
-            echo "<h1 class='title'>" . $row["title"] . "</h1>";
+            echo "<h1 class='title'>" . $row["Title"] . "</h1>";
             // echo "<p>".$row["Genre"]."</p>";
             echo "</div>";
             echo "</a>";
