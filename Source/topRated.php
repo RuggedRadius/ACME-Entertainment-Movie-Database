@@ -42,8 +42,7 @@ echo "<div id='movies-wrapper'>";
 $result = mysqli_query($dbConnection, $qry);
 
     // Display movie boxes
-while ($row = $result->fetch_assoc()) 
-{
+while ($row = $result->fetch_assoc()) {
     // Output movie box display
     echo "<a href='./movie.php?id=".$row["ID"]."' id='".$row["ID"]."'>";
     echo "<div class='movie-display' id='".$row["Title"]."'>";
@@ -61,7 +60,6 @@ while ($row = $result->fetch_assoc())
         echo "<a href='./movie.php?id=".$row["ID"]."&rated=".($starsChecked + $i + 1)."'><span id='" . ($starsChecked + $i + 1) . "' class='fa fa-star'></span>";
     }
     echo "</div>";
-
     echo "</div>";
     echo "</a>";
 }

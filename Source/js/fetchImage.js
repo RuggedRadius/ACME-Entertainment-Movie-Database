@@ -52,7 +52,26 @@ for (var i = 0; i < movies.length; i++) {
     GetImageURLbyQuery(request, img);
 }
 
+// var histories = document.getElementsByClassName("history");
+// console.log("Loading History: " + histories.length + " image(s)...");
+// for (var i = 0; i < movies.length; i++) {
 
+//     // Get title
+//     var movieTitle = movies[i].id;
+
+//     // Get image
+//     var img = movies[i].getElementsByClassName("movie-poster-top10")[0];
+
+//     // Fix query
+//     var query = FixQuery(movieTitle);
+//     console.log("Searching for movie: " + query);
+
+//     // Generate request
+//     var request = GenerateRequest(query);
+
+//     // Get and load image
+//     GetImageURLbyQuery(request, img);
+// }
 
 
 var discoveries = document.getElementsByClassName("discover-display");
@@ -124,8 +143,7 @@ function GetImageURLbyQuery(request, imgBox) {
             imageURL = "./images/download.png";
         }
         else {
-            if (data["results"][0]["poster_path"] != null && data["results"][0]["poster_path"] != "")
-            {
+            if (data["results"][0]["poster_path"] != null && data["results"][0]["poster_path"] != "") {
                 imageURL = imgURLBase + data["results"][0]["poster_path"];
                 console.log("Image URL: " + imageURL);
             }
