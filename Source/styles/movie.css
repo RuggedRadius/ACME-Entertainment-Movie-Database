@@ -361,3 +361,7 @@ td {
     margin: 0px 20px;
     white-space: nowrap;
 }
+
+.movie-details {
+    font-size: 200%;
+}

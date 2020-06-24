@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 16, 2020 at 12:54 AM
+-- Generation Time: Jun 19, 2020 at 10:08 AM
 -- Server version: 5.6.13
 -- PHP Version: 5.4.17
 
@@ -25,6 +25,29 @@ USE `movies`;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `accountcodes`
+--
+
+CREATE TABLE IF NOT EXISTS `accountcodes` (
+  `Code` varchar(6) NOT NULL,
+  `Expired` tinyint(1) NOT NULL DEFAULT '0',
+  UNIQUE KEY `Code` (`Code`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `accountcodes`
+--
+
+INSERT INTO `accountcodes` (`Code`, `Expired`) VALUES
+('AZEBWD', 0),
+('CJAGHH', 0),
+('LSZBJI', 0),
+('RTQWPN', 1),
+('SDHIJX', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `admin`
 --
 
@@ -34,15 +57,14 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `password` varchar(50) NOT NULL,
   `email` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `email`) VALUES
-(2, 'ben', 'test123', 'ben.royans@gmail.com'),
-(3, 'root', 'usbw', 'derp@derp.com');
+(4, 'billybob', 'Supersecure88', 'ben.royans@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -74,9 +96,9 @@ CREATE TABLE IF NOT EXISTS `moviesdb` (
 --
 
 INSERT INTO `moviesdb` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, `RecRetPrice`, `Rating`, `Year`, `Genre`, `Aspect`, `SearchCount`, `AddedList`, `StarRating`, `globalrating`) VALUES
-(1, 'V For Vendetta', 'Studio Babelsberg', 'Released', 'DTS', '16:9', '64.99', 'R', 2006, 'Action', '16:9', 14, 0, 3, 7),
+(1, 'V For Vendetta', 'Studio Babelsberg', 'Released', 'DTS', '16:9', '64.99', 'R', 2006, 'Action', '16:9', 17, 0, 4, 4),
 (2, '12 Monkeys', 'Universal Pictures', 'Released', 'DTS', 'LBX, 16:9', '34.98', 'R', 1995, 'Science Fiction', '1.85:1', 10, 1, 0, 0),
-(3, 'Harry Potter and the Deathly Hallows Part 2', 'Warner Bros. Pictures', 'Released', '5.1', 'LBX, 16:9', '29.98', 'R', 2011, 'Fantasy', '1.85:1', 16, 0, 0, 0),
+(3, 'Harry Potter and the Deathly Hallows Part 2', 'Warner Bros. Pictures', 'Released', '5.1', 'LBX, 16:9', '29.98', 'R', 2011, 'Fantasy', '1.85:1', 19, 0, 3, 3),
 (4, '187', 'IQ-145 Productions', 'Released', '5.1', 'LBX, 16:9', '24.98', 'R', 2019, 'Science Fiction', '1.85:1', 2, 0, 0, 0),
 (5, '1941', 'Columbia Pictures', 'Released', '5.1', 'LBX', '34.98', 'NR', 1979, 'Comedy', '2.35:1', 7, 0, 0, 0),
 (6, '200 Cigarettes', 'Paramount', 'Released', '5.1', 'LBX, 16:9', '29.99', 'R', 1999, 'Comedy', '1.85:1', 13, 0, 0, 0),
@@ -89,7 +111,7 @@ INSERT INTO `moviesdb` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, 
 (14, 'Above The Law', 'Warner Bros. Pictures', 'Released', '5.1', '4:3, LBX, 16:9', '19.98', 'R', 1988, 'Action', '1.85:1', 0, 0, 0, 0),
 (15, 'Absolute Power', 'Columbia Pictures', 'Released', '5.1', '4:3, LBX, 16:9', '24.99', 'R', 1997, 'Thriller', '2.35:1', 1, 0, 0, 0),
 (16, 'Ace Ventura: Pet Detective', 'Morgan Creek Productions', 'Released', '5.1', '4:3', '35.90', 'PG-13', 1994, 'Comedy', '1.33:1', 10, 1, 5, 0),
-(17, 'Ace Ventura: When Nature Calls', 'Morgan Creek Productions', 'Released', '5.1', '4:3, LBX, 16:9', '55.55', 'PG-13', 1995, 'Comedy', '2.35:1', 19, 1, 4, 0),
+(17, 'Ace Ventura: When Nature Calls', 'Morgan Creek Productions', 'Released', '5.1', '4:3, LBX, 16:9', '55.55', 'PG-13', 1995, 'Comedy', '2.35:1', 20, 1, 4, 0),
 (18, 'Action Jackson', 'Silver Pictures', 'Released', '2.0', '4:3', '14.98', 'R', 1988, 'Action', '1.33:1', 0, 0, 0, 0),
 (20, 'Orgazmo', 'Kuzui Enterprises', 'Released', '5.1', '4:3, LBX', '64.98', 'VAR', 1997, 'Comedy', 'VAR', 1, 0, 0, 0),
 (21, 'Adam''s Rib', 'Metro-Goldwyn-Mayer', 'Released', '1.0', '4:3', '24.98', 'NR', 1949, 'Comedy', '1.33:1', 0, 0, 0, 0),
@@ -112,9 +134,9 @@ INSERT INTO `moviesdb` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, 
 (40, 'American Graffiti', 'Universal Pictures', 'Released', 'SUR', 'LBX, 16:9', '29.98', 'PG', 1973, 'Comedy', '2.35:1', 2, 0, 0, 0),
 (41, 'American History X', 'New Line Cinema', 'Released', '5.1', 'LBX, 16:9', '24.98', 'R', 1998, 'Drama', '1.85:1', 2, 0, 0, 0),
 (42, 'Milo and Otis', 'Fuji Television Network', 'Released', '1.0', '4:3', '24.98', 'NR', 1986, 'Adventure', '1.33:1', 2, 0, 0, 0),
-(43, 'Gamer', 'Lionsgate', 'Released', '1.0', '4:3', '24.98', 'NR', 2009, 'Action', '1.33:1', 1, 0, 0, 0),
+(43, 'Gamer', 'Lionsgate', 'Released', '1.0', '4:3', '24.98', 'NR', 2009, 'Action', '1.33:1', 2, 0, 0, 0),
 (44, 'Ghostbusters', 'Universal', 'Out', '5.1', 'LBX, 16:9', '24.98', 'R', 1999, 'Science Fiction', '1.85:1', 3, 0, 0, 0),
-(45, 'Ghostbusters II', 'Universal', 'Out', '5.1', 'LBX, 16:9', '24.98', 'NR', 1999, 'Science Fiction', '1.85:1', 10, 0, 3, 8),
+(45, 'Ghostbusters II', 'Universal', 'Out', '5.1', 'LBX, 16:9', '24.98', 'NR', 1999, 'Science Fiction', '1.85:1', 10, 0, 3, 0),
 (46, 'American President', 'Warner Brothers', 'Out', '5.1', 'LBX', '19.98', 'PG-13', 1995, 'Comedy', '2.35:1', 0, 0, 0, 0),
 (47, 'Analyze This', 'Warner Brothers', 'Out', '5.1', '4:3, LBX, 16:9', '24.98', 'R', 1999, 'Comedy', '1.85:1', 0, 0, 0, 0),
 (48, 'Anchors Aweigh', 'Warner Brothers', 'Out', 'SUR', '4:3', '24.98', 'NR', 1945, 'Musical', '1.33:1', 0, 0, 0, 0),
@@ -366,7 +388,7 @@ INSERT INTO `moviesdb` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, 
 (296, 'Dudley Do Right', 'Universal', 'Out', '5.1/DTS', '4:3, LBX, 16:9', '24.98', 'PG', 1999, 'Comedy', '2.35:1', 1, 0, 0, 0),
 (297, 'Dumb & Dumber', 'New Line', 'Out', '5.1', '4:3, LBX, 16:9', '24.98', 'PG-13', 1994, 'Comedy', '1.85:1', 0, 0, 0, 0),
 (298, 'Dune', 'Universal', 'Out', '5.1', 'LBX', '24.98', 'PG-13', 1984, 'Science Fiction', '2.35:1', 7, 1, 2, 0),
-(299, 'Batman Forever', 'New Line', 'Out', '5.1', 'LBX, 16:9', '74.98', 'VAR', 1976, 'Science Fiction', 'VAR', 3, 0, 0, 0),
+(299, 'Batman Forever', 'New Line', 'Out', '5.1', 'LBX, 16:9', '74.98', 'VAR', 1976, 'Science Fiction', 'VAR', 15, 0, 5, 0),
 (300, 'Ed-TV', 'Universal', 'Out', 'DTS', 'LBX, 16:9', '34.98', 'PG-13', 1999, 'Comedy', '1.85:1', 0, 0, 0, 0),
 (301, 'Ed-TV', 'Universal', 'Out', '5.1', 'LBX, 16:9', '34.98', 'PG-13', 1999, 'Comedy', '1.85:1', 2, 0, 0, 0),
 (302, 'Eiger Sanction', 'Universal', 'Out', '1.0', 'LBX', '24.98', 'R', 1975, 'Action/Adventure', '2.35:1', 0, 0, 0, 0),
@@ -385,8 +407,8 @@ INSERT INTO `moviesdb` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, 
 (315, 'Eric Clapton: 24 Nights', 'Warner Brothers', 'Out', '2.0', '4:3', '24.99', 'NR', 1991, 'Music', '1.33:1', 0, 0, 0, 0),
 (316, 'Eric Clapton: Clapton Chronicles: The Best Of Eric Clapton', 'Warner Brothers', 'Out', '2.0', '4:3', '24.99', 'NR', 1999, 'Music', '1.33:1', 0, 0, 0, 0),
 (317, 'Escape From Alcatraz', 'Paramount', 'Out', '1.0', 'LBX', '29.99', 'PG', 1979, 'Action/Adventure', '1.85:1', 0, 0, 0, 0),
-(318, 'Escape From L.A.', 'Paramount', 'Out', '5.1', 'LBX', '29.99', 'R', 1996, 'Science Fiction', '2.35:1', 9, 1, 0, 0),
-(319, 'Event Horizon', 'Paramount', 'Out', '5.1', 'LBX', '29.99', 'R', 1997, 'Science Fiction', '2.35:1', 4, 0, 5, 5),
+(318, 'Escape From L.A.', 'Paramount', 'Out', '5.1', 'LBX', '29.99', 'R', 1996, 'Science Fiction', '2.35:1', 18, 1, 5, 0),
+(319, 'Event Horizon', 'Paramount', 'Out', '5.1', 'LBX', '29.99', 'R', 1997, 'Science Fiction', '2.35:1', 4, 0, 5, 0),
 (320, 'Excalibur', 'Warner Brothers', 'Out', '5.1', 'LBX, 16:9', '14.98', 'R', 1981, 'Science Fiction', '1.85:1', 1, 0, 0, 0),
 (321, 'Executive Decision', 'Warner Brothers', 'Out', '5.1', '4:3, LBX, 16:9', '19.98', 'R', 1996, 'Action/Adventure', '2.35:1', 0, 0, 0, 0),
 (322, 'Exorcist The Beginning', 'Warner Brothers', 'Discontinued', '5.1', '4:3, LBX, 16:9', '24.98', 'R', 1973, 'Horror', '1.85:1', 2, 0, 0, 0),
@@ -728,10 +750,10 @@ INSERT INTO `moviesdb` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, 
 (661, 'Donovan''s Reef', 'Paramount', 'Out', '1.0', 'LBX, 16:9', '29.99', 'NR', 1963, 'Comedy', '1.78:1', 0, 0, 0, 0),
 (662, 'Hell Is For Heroes', 'Paramount', 'Out', '1.0', 'LBX, 16:9', '29.99', 'NR', 1962, 'Action/Comedy', '1.78:1', 0, 0, 0, 0),
 (663, 'In Harm''s Way', 'Paramount', 'Out', '5.1', 'LBX, 16:9', '29.99', 'NR', 1965, 'Drama', '2.35:1', 0, 0, 0, 0),
-(664, 'Sonic the Hedgehog', 'Original Film', 'Released', '5.1', '4:3', '29.99', 'R', 2020, 'Action', '1.33:1', 12, 1, 5, 5),
+(664, 'Sonic the Hedgehog', 'Original Film', 'Released', '5.1', '4:3', '29.99', 'R', 2020, 'Action', '1.33:1', 15, 1, 5, 5),
 (665, 'Man Who Shot Liberty Valance', 'Paramount', 'Out', '5.1', 'LBX, 16:9', '29.99', 'NR', 1962, 'Western', '1.66:1', 0, 0, 0, 0),
 (666, 'Sons Of Katie Elder', 'Paramount', 'Out', '1.0', 'LBX, 16:9', '29.99', 'NR', 1965, 'Western', '2.35:1', 0, 0, 0, 0),
-(667, 'Futurama: Benders Big Score ', 'Paramount', 'Out', '5.1', '4:3', '19.99', 'NR', 1968, 'Science Fiction', '1.33:1', 16, 1, 5, 10),
+(667, 'Futurama: Benders Big Score ', 'Paramount', 'Out', '5.1', '4:3', '19.99', 'NR', 1968, 'Science Fiction', '1.33:1', 16, 1, 5, 0),
 (668, 'Futurama: Benders Game', 'Paramount', 'Out', '5.1', '4:3', '20.00', 'NR', 1968, 'TV Classics', '1.33:1', 5, 1, 0, 0),
 (669, 'Sunshine', 'Paramount', 'Out', '5.1', 'LBX, 16:9', '29.99', 'R', 2000, 'Drama', '1.78:1', 0, 0, 0, 0),
 (670, 'Uncommon Valor', 'Paramount', 'Out', '5.1', 'LBX, 16:9', '29.99', 'R', 1983, 'Action/Adventure', '1.78:1', 0, 0, 0, 0),
@@ -807,7 +829,7 @@ INSERT INTO `moviesdb` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, 
 (741, 'Married To The Mob', 'MGM/UA', 'Out', '2.0', '4:3, LBX', '19.98', 'R', 1988, 'Comedy', '1.85:1', 0, 0, 0, 0),
 (742, 'Mars Attacks!', 'Warner Brothers', 'Out', '5.1', '4:3, LBX, 16:9', '24.98', 'PG-13', 1996, 'Comedy', '2.35:1', 0, 0, 0, 0),
 (743, 'Mask', 'New Line', 'Out', '5.1', '4:3, LBX', '24.98', 'PG-13', 1994, 'Comedy', '1.85:1', 2, 0, 0, 0),
-(744, 'Matrix, The', 'Warner Brothers', 'Out', '5.1', 'LBX, 16:9', '24.98', 'R', 1999, 'Science Fiction', '2.35:1', 1, 0, 0, 0),
+(744, 'Matrix, The', 'Warner Brothers', 'Out', '5.1', 'LBX, 16:9', '24.98', 'R', 1999, 'Science Fiction', '2.35:1', 14, 0, 4, 0),
 (745, 'Maverick', 'Warner Brothers', 'Out', 'SUR', '4:3, LBX, 16:9', '24.98', 'PG', 1994, 'Western', '2.35:1', 0, 0, 0, 0),
 (746, 'McKenzie Break', 'MGM/UA', 'Out', '2.0', 'LBX', '24.98', 'PG', 1970, 'Action/Adventure', '1.85:1', 0, 0, 0, 0),
 (747, 'Mean Streets', 'Warner Brothers', 'Out', '1.0', '4:3, LBX', '24.98', 'R', 1973, 'Drama', '1.85:1', 0, 0, 0, 0),
@@ -854,9 +876,9 @@ INSERT INTO `moviesdb` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, 
 (788, 'The Matrix Reloaded', 'Panorama', 'Out', '2.0', 'LBX', '19.98', 'NR', 1996, 'Science Fiction', '1.85:1', 4, 0, 0, 0),
 (789, 'Harry Potter and the Goblet Of Fire', 'New Line', 'Out', '5.1', '4:3, LBX, 16:9', '24.98', 'PG-13', 1997, 'Fantasy', '1.78:1', 2, 0, 0, 0),
 (790, 'Mr. Wonderful', 'Warner Brothers', 'Out', 'SUR', '4:3, LBX, 16:9', '19.98', 'PG-13', 1993, 'Comedy', '1.85:1', 1, 0, 0, 0),
-(791, 'Rise of the Planet of the Apes', 'Universal', 'Out', '1.0', '4:3', '29.98', 'NR', 1932, 'Science Fiction', '1.33:1', 4, 0, 0, 0),
+(791, 'Rise of the Planet of the Apes', 'Universal', 'Out', '1.0', '4:3', '29.98', 'NR', 1932, 'Science Fiction', '1.33:1', 5, 0, 0, 0),
 (792, 'The Mummy', 'Universal', 'Discontinued', '5.1', 'LBX, 16:9', '29.98', 'PG-13', 1999, 'Action/Adventure', '2.35:1', 6, 0, 0, 0),
-(793, 'Kill Bill: Vol. 1', 'Universal', 'Discontinued', '5.1', '4:3', '29.98', 'PG-13', 1999, 'Action', '2.35:1', 2, 0, 0, 0),
+(793, 'Kill Bill: Vol. 1', 'Universal', 'Discontinued', '5.1', '4:3', '29.98', 'PG-13', 1999, 'Action', '2.35:1', 11, 0, 5, 0),
 (794, 'Murder at 1600', 'Warner Brothers', 'Out', '5.1', '4:3, LBX, 16:9', '19.98', 'R', 1997, 'Action/Adventure', '1.85:1', 0, 0, 0, 0),
 (795, 'Murder In The First', 'Warner Brothers', 'Out', 'SUR', '4:3, LBX, 16:9', '14.98', 'R', 1995, 'Drama', '1.78:1', 0, 0, 0, 0),
 (796, 'Music Man', 'Warner Bros. Pictures', 'Released', '5.1', 'LBX, 16:9', '24.98', 'NR', 1962, 'Comedy', '2.35:1', 0, 0, 0, 0),
@@ -1117,7 +1139,7 @@ INSERT INTO `moviesdb` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, 
 (1056, 'South Park Imaginationland', 'Warner Brothers', 'Out', '2.0', '4:3', '59.92', 'NR', 1973, 'Comedy', '1.33:1', 6, 0, 0, 0),
 (1057, 'Cool Runnings', 'Warner Brothers', 'Out', '2.0', '4:3', '59.92', 'NR', 1977, 'Comedy', '1.33:1', 2, 0, 0, 0),
 (1058, 'South Park: Bigger, Longer And Uncut', 'Paramount', 'Out', '5.1', 'LBX, 16:9', '29.99', 'R', 1999, 'Comedy', '1.85:1', 17, 1, 5, 0),
-(1059, 'Space Jam', 'Warner Brothers', 'Discontinued', '5.1', '4:3', '24.98', 'PG', 1996, 'Family', '1.33:1', 6, 0, 2, 8),
+(1059, 'Space Jam', 'Warner Brothers', 'Discontinued', '5.1', '4:3', '24.98', 'PG', 1996, 'Family', '1.33:1', 6, 0, 2, 0),
 (1060, 'Excalibur', 'Orion Pictures', 'Released', '5.1', '4:3', '24.98', 'PG', 1981, 'Adventure', '1.33:1', 2, 0, 0, 0),
 (1061, 'Spaceballs', 'MGM/UA', 'Out', '2.0', '4:3, LBX', '24.98', 'PG', 1987, 'Comedy', '1.85:1', 4, 1, 0, 0),
 (1062, 'Spartacus', 'Universal', 'Out', '5.1', 'LBX', '26.98', 'NR', 1960, 'Action/Adventure', '2.35:1', 0, 0, 0, 0),
@@ -1312,7 +1334,7 @@ INSERT INTO `moviesdb` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, 
 (1254, 'Wiz', 'Universal', 'Out', 'SUR', 'LBX', '26.98', 'G', 1978, 'Musical', '1.85:1', 0, 0, 0, 0),
 (1255, 'Wizard of Oz', 'MGM/UA', 'Discontinued', '1.0', '4:3', '24.98', 'G', 1939, 'Musical', '1.33:1', 8, 1, 3, 0),
 (1256, 'Toy Story', 'Warner Brothers', 'Out', '5.1', '4:3', '49.98', 'G', 1995, 'Animation', '1.33:1', 4, 0, 0, 0),
-(1257, 'Toy Story 2', 'Warner Brothers', 'Out', '5.1', '4:3', '24.98', 'G', 1999, 'Animation', '1.33:1', 2, 0, 0, 0),
+(1257, 'Toy Story 2', 'Warner Brothers', 'Out', '5.1', '4:3', '24.98', 'G', 1999, 'Animation', '1.33:1', 9, 0, 5, 0),
 (1258, 'Wolf Man', 'Universal', 'Out', '1.0', '4:3', '29.98', 'NR', 1941, 'Horror', '1.33:1', 2, 0, 0, 0),
 (1259, 'Woman of The Year', 'MGM/UA', 'Discontinued', '1.0', '4:3', '24.98', 'NR', 1942, 'Comedy', '1.33:1', 0, 0, 0, 0),
 (1260, 'Wood', 'Paramount', 'Out', '5.1', 'LBX, 16:9', '29.99', 'R', 1999, 'Comedy', '1.85:1', 0, 0, 0, 0),
@@ -1322,7 +1344,7 @@ INSERT INTO `moviesdb` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, 
 (1264, 'Xanadu', 'Universal', 'Out', 'SUR', 'LBX, 16:9', '24.98', 'PG', 1980, 'Musical', '1.85:1', 0, 0, 0, 0),
 (1265, 'Yellow Submarine', 'MGM/UA', 'Out', '5.1', 'LBX', '24.98', 'G', 1968, 'Musical', '1.85:1', 2, 0, 0, 0),
 (1266, 'You''ve Got Mail', 'Warner Brothers', 'Out', '5.1', 'LBX, 16:9', '24.98', 'PG', 1998, 'Comedy', '1.85:1', 0, 0, 0, 0),
-(1267, 'Con Air', 'Warner Brothers', 'Out', '2.0', '4:3', '19.95', 'NR', 1998, 'Action', '1.33:1', 23, 1, 5, 14),
+(1267, 'Con Air', 'Warner Brothers', 'Out', '2.0', '4:3', '19.95', 'NR', 1998, 'Action', '1.33:1', 23, 1, 5, 0),
 (1268, 'Young Guns 2', 'Warner Brothers', 'Out', '5.1', 'LBX, 16:9', '19.98', 'PG-13', 1990, 'Western', '2.35:1', 0, 0, 0, 0),
 (1269, 'Young Hercules', 'Universal', 'Out', '2.0', '4:3', '24.98', 'PG-13', 1997, 'Action/Adventure', '1.33:1', 0, 0, 0, 0),
 (1270, 'Zero Effect', 'Warner Brothers', 'Out', '5.1', '4:3, LBX, 16:9', '24.98', 'R', 1998, 'Drama', '1.85:1', 0, 0, 0, 0),
@@ -1384,7 +1406,7 @@ INSERT INTO `moviesdb` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, 
 (1327, 'Dark Victory', 'Warner Brothers', 'Out', '1.0', '4:3', '24.98', 'NR', 1939, 'Drama', '1.33:1', 0, 0, 0, 0),
 (1328, 'Jezebel', 'Warner Brothers', 'Out', '1.0', '4:3', '24.98', 'NR', 1938, 'Drama', '1.33:1', 0, 0, 0, 0),
 (1329, 'Next Best Thing', 'Paramount', 'Out', '5.1', 'LBX, 16:9', '29.99', 'PG-13', 2000, 'Comedy', '1.85:1', 0, 0, 0, 0),
-(1330, 'Jurassic Park', 'Universal Pictures', 'Released', '5.1', 'LBX, 16:9', '29.95', 'PG-13', 1993, 'Adventure', '1.85:1', 14, 1, 4, 9),
+(1330, 'Jurassic Park', 'Universal Pictures', 'Released', '5.1', 'LBX, 16:9', '29.95', 'PG-13', 1993, 'Adventure', '1.85:1', 14, 1, 4, 0),
 (1331, 'Lost World: Jurassic Park', 'Universal Pictures', 'Released', '5.1', 'LBX, 16:9', '29.95', 'PG-13', 1997, 'Adventure', '1.85:1', 2, 0, 0, 0),
 (1332, 'Twin Peaks: Fire Walk with Me', 'New Line', 'TBA', 'SUR', 'LBX, 16:9', '24.95', 'R', 1992, 'Drama', '1.85:1', 0, 0, 0, 0),
 (1333, '3 Strikes', 'MGM/UA', 'Out', '5.1', 'LBX, 16:9', '26.98', 'R', 2000, 'Comedy', '1.85:1', 0, 0, 0, 0),
@@ -1700,7 +1722,7 @@ INSERT INTO `moviesdb` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, 
 (1650, 'Art of War', 'Warner Brothers', 'Out', '5.1', 'LBX', '24.95', 'R', 2000, 'Action/Adventure', '2.35:1', 0, 0, 0, 0),
 (1651, 'Seven', 'New Line', 'Out', '5.1/DTS 6.1', 'LBX, 16:9', '29.95', 'R', 1995, 'Drama', '2.40:1', 0, 0, 0, 0),
 (1652, 'Autumn In New York', 'MGM/UA', 'Out', '5.1', 'LBX, 16:9', '26.98', 'PG-13', 2000, 'Drama', '1.85:1', 0, 0, 0, 0),
-(1653, 'Warcraft', 'Universal', 'Out', '2.0', '4:3', '24.95', 'NR', 2016, 'Fantasy', '1.33:1', 4, 0, 5, 0),
+(1653, 'Warcraft', 'Universal', 'Out', '2.0', '4:3', '24.95', 'NR', 2016, 'Fantasy', '1.33:1', 9, 0, 5, 0),
 (1654, 'Bring It On', 'Universal', 'Out', '5.1/DTS', 'LBX, 16:9', '26.98', 'PG-13', 2000, 'Comedy', '1.85:1', 2, 0, 0, 0),
 (1655, 'MVP: Most Valuable Primate', 'Warner Brothers', 'Out', '2.0', '4:3', '24.98', 'PG', 2000, 'Family', '1.33:1', 2, 0, 0, 0),
 (1656, 'Time Machine (DVD Only)', 'Warner Brothers', 'Out', '5.1', 'LBX, 16:9', '24.98', 'NR', 1960, 'Science Fiction', '1.85:1', 0, 1, 0, 0),
@@ -1803,7 +1825,7 @@ INSERT INTO `moviesdb` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, 
 (1754, 'Playboy Girls Down Under: Surviving The Australian Outback', 'Universal', 'Discontinued', '2.0', '4:3', '24.98', 'UR', 2000, 'Late Night', '1.33:1', 0, 0, 0, 0),
 (1755, 'Porky''s/ Porky''s 2: The Next Day', 'Universal', 'Out', '2.0', '4:3', '24.98', 'R', 1970, 'Comedy', '1.33:1', 0, 0, 0, 0),
 (1756, 'Bait', 'Warner Brothers', 'Out', '5.1', 'LBX, 16:9', '19.98', 'R', 2000, 'Comedy', '2.35:1', 2, 0, 0, 0),
-(1757, 'Battlefield Earth', 'Warner Brothers', 'Out', '5.1', 'LBX, 16:9', '19.98', 'PG-13', 2000, 'Science Fiction', '2.35:1', 14, 0, 2, 12),
+(1757, 'Battlefield Earth', 'Warner Brothers', 'Out', '5.1', 'LBX, 16:9', '19.98', 'PG-13', 2000, 'Science Fiction', '2.35:1', 21, 0, 5, 7),
 (1758, '12 Angry Men', 'MGM/UA', 'Out', '1.0', 'LBX', '19.98', 'NR', 1957, 'Drama', '1.66:1', 0, 0, 0, 0),
 (1759, 'Short: International Release #3', 'Warner Brothers', 'Out', '2.0', '4:3, LBX', '14.98', 'NR', 2001, 'Special Interest', 'VAR', 0, 0, 0, 0),
 (1760, 'Reversal Of Fortune', 'Warner Brothers', 'Out', '2.0', 'LBX, 16:9', '19.98', 'R', 1990, 'Drama', '1.85:1', 2, 0, 0, 0),
@@ -1952,7 +1974,7 @@ INSERT INTO `moviesdb` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, 
 (1911, 'Loving Jezebel', 'Universal', 'Out', 'SUR', 'LBX, 16:9', '24.98', 'R', 1999, 'Comedy', '1.85:1', 0, 0, 0, 0),
 (1912, 'Kill Bill: Vol. 2', 'Universal', 'Out', '5.1/DTS', 'LBX, 16:9', '29.98', 'PG-13', 1999, 'Action', '2.35:1', 2, 0, 0, 0),
 (1913, 'Rio Bravo', 'Warner Brothers', 'Out', '1.0', 'LBX, 16:9', '19.98', 'NR', 1969, 'Western', '1.85:1', 0, 0, 0, 0),
-(1914, 'Superman II', 'Warner Brothers', 'Out', 'SUR', 'LBX, 16:9', '19.98', 'PG', 1980, 'Fantasy', '2.35:1', 7, 0, 0, 0),
+(1914, 'Superman II', 'Warner Brothers', 'Out', 'SUR', 'LBX, 16:9', '19.98', 'PG', 1980, 'Fantasy', '2.35:1', 10, 0, 5, 0),
 (1915, 'Superman III', 'Warner Brothers', 'Out', 'SUR', 'LBX, 16:9', '19.98', 'PG', 1983, 'Fantasy', '2.35:1', 2, 0, 0, 0),
 (1916, 'Superman 4: The Quest For Peace', 'Warner Brothers', 'Out', 'SUR', 'LBX, 16:9', '19.98', 'PG', 1987, 'Fantasy', '2.35:1', 1, 0, 0, 0),
 (1917, 'Ultramarines A Warhammer 40000 Movie', 'Warner Brothers', 'Out', '5.1', 'LBX, 16:9', '24.98', 'PG', 1978, 'Fantasy', '2.35:1', 8, 1, 0, 0),
@@ -2118,7 +2140,7 @@ INSERT INTO `moviesdb` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, 
 (2078, 'War for Planet of the Apes', 'Universal', 'Pending', '5.1/DTS', '4:3 P&S', '26.98', 'PG', 2000, 'Family', '1.33:1', 3, 0, 0, 0),
 (2079, 'How The Grinch Stole Christmas', 'Universal', 'Pending', '5.1/DTS', 'LBX, 16:9', '26.98', 'PG', 2000, 'Family', '1.85:1', 2, 0, 0, 0),
 (2080, 'Little Man Tate (Special Edition)', 'MGM/UA', 'Pending', '5.1', 'LBX, 16:9', '19.98', 'PG', 1991, 'Drama', '1.85:1', 0, 0, 0, 0),
-(2081, 'Princess Bride', 'MGM/UA', 'Pending', '5.1', 'LBX, 16:9', '29.98', 'PG', 1987, 'Fantasy', '1.85:1', 16, 0, 5, 18),
+(2081, 'Princess Bride', 'MGM/UA', 'Pending', '5.1', 'LBX, 16:9', '29.98', 'PG', 1987, 'Fantasy', '1.85:1', 21, 0, 5, 10),
 (2082, 'Return Of A Man Called Horse', 'MGM/UA', 'Pending', '2.0', 'LBX', '19.98', 'PG-13', 1976, 'Western', '2.35:1', 0, 0, 0, 0),
 (2083, 'Under Fire', 'MGM/UA', 'Pending', '5.1', 'LBX, 16:9', '14.95', 'R', 1983, 'Drama', '1.85:1', 0, 0, 0, 0),
 (2084, 'Valdez Is Coming', 'MGM/UA', 'Pending', '1.0', 'LBX', '19.98', 'PG-13', 1970, 'Western', '1.66:1', 0, 0, 0, 0),
@@ -2193,13 +2215,13 @@ INSERT INTO `moviesdb` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, 
 (2155, 'Lord Of The Rings: The Two Towers', 'Warner Brothers', 'Pending', '2.0', '4:3', '19.98', 'PG', 1978, 'Fantasy', '1.33:1', 16, 1, 4, 0),
 (2156, 'Mission Impossible/ Mission Impossible 2', 'Paramount', 'Pending', '5.1', 'LBX, 16:9', '44.95', 'PG-13', 1977, 'Action/Adventure', '2.35:1', 0, 0, 0, 0),
 (2157, 'National Geographic: Africa', 'Warner Brothers', 'Pending', '5.1', 'LBX', '99.98', 'NR', 2001, 'Special Interest', '1.85:1', 0, 0, 0, 0),
-(2158, 'The Simpsons Movie', 'Paramount', 'Pending', '5.1', '4:3', '44.95', 'G', 1979, 'Animation', '1.85:1', 16, 0, 1, 11),
+(2158, 'The Simpsons Movie', 'Paramount', 'Pending', '5.1', '4:3', '44.95', 'G', 1979, 'Animation', '1.85:1', 16, 0, 1, 0),
 (2159, 'Aida: Verdi: James Levine: Metropolitan Opera', 'Universal', 'Out', '2.0', '4:3', '29.98', 'NR', 1990, 'Music', '1.33:1', 0, 0, 0, 0),
 (2160, 'Andrea Bocelli: Sacred Arias', 'Universal', 'Out', '5.0', 'LBX, 16:9', '29.98', 'NR', 2000, 'Music', '1.78:1', 0, 0, 0, 0),
 (2161, 'Monty Python Live at the Hollywood Bowl', 'Universal', 'Out', '2.0', 'LBX', '29.98', 'NR', 1995, 'Comedy', '1.66:1', 4, 0, 0, 0),
 (2162, 'Blink 182: The Urethra Chronicles', 'Universal', 'Out', '2.0', '4:3', '19.98', 'NR', 1999, 'Music', '1.33:1', 0, 0, 0, 0),
 (2163, 'Crocodile Dundee In Los Angeles', 'Paramount', 'Pending', '5.1', 'LBX, 16:9', '29.99', 'PG', 2001, 'Comedy', '2.35:1', 0, 0, 0, 0),
-(2164, 'Crocodile Dundee 2', 'Paramount', 'Pending', '5.1', 'LBX, 16:9', '24.99', 'PG', 1988, 'Comedy', '2.35:1', 8, 0, 5, 15),
+(2164, 'Crocodile Dundee 2', 'Paramount', 'Pending', '5.1', 'LBX, 16:9', '24.99', 'PG', 1988, 'Comedy', '2.35:1', 8, 0, 5, 0),
 (2165, 'Into The Arms Of Strangers: Stories Of The Kindertransport (Special Edition)', 'Warner Brothers', 'Out', '5.1', '4:3', '24.98', 'PG', 2000, 'Special Interest', '1.33:1', 0, 0, 0, 0),
 (2166, 'Powerman 5000: Backstage And Beyond The Infinite', 'Universal', 'Out', '5.1', '4:3', '19.98', 'NR', 2001, 'Music', '1.33:1', 0, 0, 0, 0),
 (2167, 'Lord of the Rings: Return Of The King', 'Warner Brothers', 'Pending', '2.0', '4:3', '19.98', 'PG', 1979, 'Fantasy', '1.33:1', 8, 1, 0, 0),
@@ -2253,7 +2275,7 @@ INSERT INTO `moviesdb` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, 
 (2216, 'New York', 'Warner Brothers', 'Pending', '2.0', '4:3 P&S', '139.98', 'NR', 1979, 'Special Interest', '1.33:1', 0, 0, 0, 0),
 (2217, 'Empire Of The Sun', 'Warner Brothers', 'Pending', '5.1', 'LBX, 16:9', '24.98', 'PG', 1987, 'Drama', '1.85:1', 0, 0, 0, 0),
 (2218, 'Grandma Got Run Over By A Reindeer', 'Warner Brothers', 'Pending', '2.0', '4:3', '19.98', 'NR', 2000, 'Animation', '1.33:1', 0, 0, 0, 0),
-(2219, 'Final Fantasy The Spirits Within', 'Warner Brothers', 'Pending', '2.0', '4:3 P&S, LBX, 16:9', '19.98', 'NR', 1959, 'Science Fiction', '1.85:1', 2, 0, 0, 0),
+(2219, 'Final Fantasy The Spirits Within', 'Warner Brothers', 'Pending', '2.0', '4:3 P&S, LBX, 16:9', '19.98', 'NR', 1959, 'Science Fiction', '1.85:1', 11, 0, 5, 0),
 (2220, 'Bjork: Hidden Place DVD Single', 'Warner Music', 'Out', '5.1', '4:3', '9.95', 'NR', 2001, 'Music', '1.33:1', 0, 0, 0, 0),
 (2221, 'Land Before Time: The Big Freeze', 'Universal', 'Pending', '5.1', '4:3', '24.98', 'G', 2001, 'Animation', '1.33:1', 0, 0, 0, 0),
 (2222, 'Angel Eyes (Special Edition/ 2001)', 'Warner Brothers', 'Pending', '5.1', 'LBX, 16:9', '24.98', 'R', 2001, 'Mystery/Suspense', '1.85:1', 0, 0, 0, 0),
@@ -2302,8 +2324,8 @@ INSERT INTO `moviesdb` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, 
 (2267, 'Friends: The Best Of Friends #4', 'Warner Brothers', 'Pending', 'SUR', '4:3', '19.98', 'NR', 1994, 'TV Classics', '1.33:1', 0, 0, 0, 0),
 (2270, 'South Park: Winter Wonderland', 'Warner Brothers', 'Pending', '2.0', '4:3', '19.98', 'NR', 1971, 'TV Classics', '1.33:1', 0, 0, 0, 0),
 (2271, 'Frankie And Johnny (1991)', 'Paramount', 'Pending', 'SUR', '4:3', '24.99', 'R', 1991, 'Drama', '1.33:1', 0, 0, 0, 0),
-(2272, 'Back to the Future II', 'Paramount', 'Pending', '5.1', 'LBX', '269.91', 'PG', 1974, 'Science Fiction', '2.35:1', 2, 0, 0, 0),
-(2273, 'Ex Machina', 'Paramount', 'Pending', '5.1', 'LBX', '179.94', 'PG', 1972, 'Science Fiction', '2.35:1', 9, 1, 5, 9),
+(2272, 'Back to the Future II', 'Paramount', 'Pending', '5.1', 'LBX', '269.91', 'PG', 1974, 'Science Fiction', '2.35:1', 5, 0, 5, 0),
+(2273, 'Ex Machina', 'Paramount', 'Pending', '5.1', 'LBX', '179.94', 'PG', 1972, 'Science Fiction', '2.35:1', 9, 1, 5, 0),
 (2274, 'What''s Eating Gilbert Grape', 'Paramount', 'Pending', 'SUR', 'LBX', '24.99', 'PG-13', 1993, 'Drama', '1.85:1', 0, 0, 0, 0),
 (2275, 'MTV: Inside Fear', 'Paramount', 'Pending', '2.0', '4:3', '19.99', 'NR', 2001, 'Special Interest', '1.33:1', 0, 0, 0, 0),
 (2276, 'MTV: The Real World You Never Saw: Back To New York', 'Paramount', 'Pending', '2.0', '4:3', '19.99', 'NR', 2001, 'Special Interest', '1.33:1', 0, 0, 0, 0),
@@ -2328,7 +2350,7 @@ INSERT INTO `moviesdb` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, 
 (2295, 'Dodsworth', 'MGM/UA', 'Pending', '1.0', '4:3', '19.98', 'NR', 1936, 'Drama', '1.33:1', 0, 0, 0, 0),
 (2296, 'Josie And The Pussycats (Special Edition/ PG Version)', 'Universal', 'Pending', '5.1/DTS', 'LBX, 16:9', '26.98', 'PG', 2001, 'Comedy', '1.85:1', 0, 0, 0, 0),
 (2297, 'For Sama', 'ITN Productions', 'Released', 'ACS', '1.1', '29.00', 'PG', 2019, 'Documentary', '1', 1, 0, 0, 0),
-(2298, 'The Phantom', 'Warner Brothers', 'TBA', '3.0', '3.1', '35.90', 'PG-13', 2004, 'Action/Adventure', '1.2.3', 27, 1, 4, 0),
+(2298, 'The Phantom', 'Warner Brothers', 'TBA', '3.0', '3.1', '35.90', 'PG-13', 2004, 'Action/Adventure', '1.2.3', 41, 1, 5, 0),
 (2299, 'Die Hard', 'Gordon Company', 'Released', '7.2', '16:9', '99.99', 'G', 1988, 'Action', '1.85:1', 3, 0, 0, 0),
 (2300, 'Die Hard 2', 'Gordon Company', 'Released', '7.2', '16:9', '99.99', 'G', 1990, 'Action', '1.85:1', 0, 0, 0, 0),
 (2301, 'Die Hard 3', 'Cinergi Pictures Entertainment', 'Released', '', '', '9.99', '0', 1995, 'Action', '16:9', 0, 0, 0, 0),
@@ -2343,15 +2365,15 @@ INSERT INTO `moviesdb` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, 
 --
 
 CREATE TABLE IF NOT EXISTS `mylist` (
-  `id` int(9) NOT NULL,
-  `title` varchar(255) NOT NULL
+  `ID` int(9) NOT NULL,
+  `Title` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `mylist`
 --
 
-INSERT INTO `mylist` (`id`, `title`) VALUES
+INSERT INTO `mylist` (`ID`, `Title`) VALUES
 (793, 'Kill Bill: Vol. 1'),
 (664, 'Sonic the Hedgehog'),
 (2273, 'Ex Machina');
@@ -2389,38 +2411,44 @@ CREATE TABLE IF NOT EXISTS `top10history` (
   `id7` int(6) NOT NULL,
   `id8` int(6) NOT NULL,
   `id9` int(6) NOT NULL,
-  `id10` int(6) NOT NULL
+  `id10` int(6) NOT NULL,
+  `count1` int(10) NOT NULL,
+  `count2` int(10) NOT NULL,
+  `count3` int(10) NOT NULL,
+  `count4` int(10) NOT NULL,
+  `count5` int(10) NOT NULL,
+  `count6` int(10) NOT NULL,
+  `count7` int(10) NOT NULL,
+  `count8` int(10) NOT NULL,
+  `count9` int(10) NOT NULL,
+  `count10` int(10) NOT NULL,
+  `title1` varchar(255) NOT NULL,
+  `title2` varchar(255) NOT NULL,
+  `title3` varchar(255) NOT NULL,
+  `title4` varchar(255) NOT NULL,
+  `title5` varchar(255) NOT NULL,
+  `title6` varchar(255) NOT NULL,
+  `title7` varchar(255) NOT NULL,
+  `title8` varchar(255) NOT NULL,
+  `title9` varchar(255) NOT NULL,
+  `title10` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `top10history`
 --
 
-INSERT INTO `top10history` (`datetime`, `id1`, `id2`, `id3`, `id4`, `id5`, `id6`, `id7`, `id8`, `id9`, `id10`) VALUES
-('2020-06-15 14:09:03', 1267, 1, 319, 664, 1757, 11, 7, 6, 2304, 3),
-('2020-06-15 14:09:12', 1267, 1, 319, 664, 2081, 1757, 2304, 7, 6, 3),
-('2020-06-15 14:10:34', 1267, 1, 319, 2081, 664, 1757, 667, 7, 6, 3),
-('2020-06-15 14:10:39', 667, 1267, 1, 319, 2081, 664, 1757, 7, 6, 3),
-('2020-06-15 14:20:30', 1267, 667, 1, 319, 2081, 664, 1757, 7, 6, 3),
-('2020-06-15 14:21:17', 1267, 667, 1, 2081, 319, 664, 1757, 7, 6, 3),
-('2020-06-15 20:09:14', 1267, 2081, 667, 1, 319, 664, 1757, 7, 6, 3),
-('2020-06-15 20:19:34', 2081, 1267, 667, 1, 319, 664, 1757, 7, 6, 3),
-('2020-06-15 22:26:40', 2081, 1267, 1757, 667, 1, 319, 664, 7, 6, 3),
-('2020-06-15 22:49:53', 2081, 1267, 1757, 667, 1, 319, 664, 2273, 7, 2304),
-('2020-06-15 22:49:59', 2081, 1267, 667, 1757, 2273, 1, 664, 319, 7, 2304),
-('2020-06-15 23:04:34', 2081, 1267, 1757, 667, 2273, 1, 664, 319, 7, 2304),
-('2020-06-16 07:11:34', 2081, 1267, 1757, 667, 2273, 1, 2158, 664, 319, 7),
-('2020-06-16 07:11:40', 2081, 1267, 1757, 2158, 667, 2273, 1, 664, 319, 7),
-('2020-06-16 07:25:14', 2081, 1267, 1757, 2158, 667, 2273, 1, 664, 319, 45),
-('2020-06-16 07:25:19', 2081, 1267, 1757, 667, 2158, 2273, 1, 319, 664, 45),
-('2020-06-16 07:25:23', 2081, 1267, 1757, 667, 2158, 2273, 1, 664, 1059, 1330),
-('2020-06-16 07:25:29', 2081, 1267, 1757, 667, 2158, 2273, 1, 45, 664, 1330),
-('2020-06-16 07:25:31', 2081, 1267, 1757, 667, 2158, 1330, 2273, 45, 1, 664),
-('2020-06-16 07:25:33', 2081, 1267, 1757, 667, 2158, 1330, 2273, 45, 1, 1059),
-('2020-06-16 07:32:18', 2081, 1267, 1757, 667, 2158, 1330, 2273, 1059, 45, 1),
-('2020-06-16 07:42:19', 2081, 1267, 1757, 2158, 667, 1330, 2273, 1059, 45, 1),
-('2020-06-16 08:34:00', 2081, 1267, 1757, 2158, 2164, 667, 2273, 1330, 1059, 45),
-('2020-06-16 08:34:48', 2081, 2164, 1267, 1757, 2158, 667, 2273, 1330, 1059, 45);
+INSERT INTO `top10history` (`datetime`, `id1`, `id2`, `id3`, `id4`, `id5`, `id6`, `id7`, `id8`, `id9`, `id10`, `count1`, `count2`, `count3`, `count4`, `count5`, `count6`, `count7`, `count8`, `count9`, `count10`, `title1`, `title2`, `title3`, `title4`, `title5`, `title6`, `title7`, `title8`, `title9`, `title10`) VALUES
+('2020-06-19 16:53:08', 2298, 299, 793, 318, 2081, 2164, 1257, 1267, 1757, 2158, 79, 35, 30, 20, 18, 15, 15, 14, 12, 11, 'The Phantom', 'Batman Forever', 'Kill Bill: Vol. 1', 'Escape From L.A.', 'Princess Bride', 'Crocodile Dundee 2', 'Toy Story 2', 'Con Air', 'Battlefield Earth', 'The Simpsons Movie'),
+('2020-06-19 16:56:31', 744, 2298, 299, 793, 318, 2081, 1257, 2164, 1267, 1757, 117, 79, 35, 30, 20, 18, 15, 15, 14, 12, 'Matrix, The', 'The Phantom', 'Batman Forever', 'Kill Bill: Vol. 1', 'Escape From L.A.', 'Princess Bride', 'Toy Story 2', 'Crocodile Dundee 2', 'Con Air', 'Battlefield Earth'),
+('2020-06-19 17:34:42', 744, 2219, 2298, 299, 793, 318, 2081, 1257, 2164, 1267, 117, 80, 79, 35, 30, 20, 18, 15, 15, 14, 'Matrix, The', 'Final Fantasy The Spirits Within', 'The Phantom', 'Batman Forever', 'Kill Bill: Vol. 1', 'Escape From L.A.', 'Princess Bride', 'Toy Story 2', 'Crocodile Dundee 2', 'Con Air'),
+('2020-06-19 17:35:09', 2219, 744, 2298, 299, 793, 318, 2081, 1257, 2164, 1267, 160, 117, 79, 35, 30, 20, 18, 15, 15, 14, 'Final Fantasy The Spirits Within', 'Matrix, The', 'The Phantom', 'Batman Forever', 'Kill Bill: Vol. 1', 'Escape From L.A.', 'Princess Bride', 'Toy Story 2', 'Crocodile Dundee 2', 'Con Air'),
+('2020-06-19 17:58:18', 2219, 2298, 744, 299, 793, 318, 2081, 1257, 2164, 1267, 160, 133, 121, 35, 30, 20, 18, 15, 15, 14, 'Final Fantasy The Spirits Within', 'The Phantom', 'Matrix, The', 'Batman Forever', 'Kill Bill: Vol. 1', 'Escape From L.A.', 'Princess Bride', 'Toy Story 2', 'Crocodile Dundee 2', 'Con Air'),
+('2020-06-19 18:00:12', 2304, 11, 10, 9, 7, 6, 5, 4, 3, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'The Hobbit: Battle of the Five Armies', '48 HRS.', '3 Days Of The Condor', '2010: The year We Made Contact', '2001: A Space Odyssey', '200 Cigarettes', '1941', '187', 'Harry Potter and the Deathly Hallows Part 2', '12 Monkeys'),
+('2020-06-19 18:01:39', 664, 11, 10, 9, 7, 6, 5, 4, 3, 2304, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Sonic the Hedgehog', '48 HRS.', '3 Days Of The Condor', '2010: The year We Made Contact', '2001: A Space Odyssey', '200 Cigarettes', '1941', '187', 'Harry Potter and the Deathly Hallows Part 2', 'The Hobbit: Battle of the Five Armies'),
+('2020-06-19 18:02:23', 664, 1, 3, 1757, 11, 10, 2304, 7, 6, 5, 5, 4, 3, 2, 0, 0, 0, 0, 0, 0, 'Sonic the Hedgehog', 'V For Vendetta', 'Harry Potter and the Deathly Hallows Part 2', 'Battlefield Earth', '48 HRS.', '3 Days Of The Condor', 'The Hobbit: Battle of the Five Armies', '2001: A Space Odyssey', '200 Cigarettes', '1941'),
+('2020-06-19 18:03:56', 2081, 664, 1, 3, 1757, 11, 2304, 7, 6, 5, 10, 5, 4, 3, 2, 0, 0, 0, 0, 0, 'Princess Bride', 'Sonic the Hedgehog', 'V For Vendetta', 'Harry Potter and the Deathly Hallows Part 2', 'Battlefield Earth', '48 HRS.', 'The Hobbit: Battle of the Five Armies', '2001: A Space Odyssey', '200 Cigarettes', '1941'),
+('2020-06-19 18:07:33', 2081, 1757, 664, 1, 3, 11, 2304, 7, 6, 5, 10, 7, 5, 4, 3, 0, 0, 0, 0, 0, 'Princess Bride', 'Battlefield Earth', 'Sonic the Hedgehog', 'V For Vendetta', 'Harry Potter and the Deathly Hallows Part 2', '48 HRS.', 'The Hobbit: Battle of the Five Armies', '2001: A Space Odyssey', '200 Cigarettes', '1941');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

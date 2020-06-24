@@ -22,136 +22,48 @@ BODY {
 <body>
 
 <?php
-require "./php/connection.php";
 
-$qry = "SELECT * FROM `top10history`";
-$result = mysqli_query($dbConnection, $qry);
+function DownloadMoviePoster($title)
+{
+    $title = FixQuery($title);
+    $query = GenerateRequest($title);
 
-// Ouput rows
-$counter = 0;
-while ($row = $result->fetch_assoc()) {
-    echo "<div id='chart-container'><canvas class='history-graph' id='graphCanvas$counter'></canvas></div>";
-    $counter++;
+    // Download and save image
+    $output = "posters/$title.jpg";
+    file_put_contents($output, file_get_contents($query));
 }
+
+
+
+
+function GenerateRequest($query)
+{
+    return "https://api.themoviedb.org/3/search/movie?api_key=f2e15980f239d4c99375ace9706067c5&query=" . $query;
+}
+
+function FixQuery($query)
+{
+    str_replace(" ", "+", $query);
+    str_replace(" ", "+", $query);
+    str_replace(" ", "+", $query);
+    str_replace(" ", "+", $query);
+    str_replace(" ", "+", $query);
+    str_replace(" ", "+", $query);
+    str_replace(" ", "+", $query);
+    str_replace(" ", "+", $query);
+    str_replace(" ", "+", $query);
+    str_replace(" ", "+", $query);
+    str_replace(" ", "+", $query);
+    str_replace(" ", "+", $query);
+    return query;
+}
+
+
+
+
 ?>
 
 
-<script>
-    $(document).ready(function () {            
-        showGraphs();
-    });
-
-
-
-    function showGraphs()
-        {
-            $.post("data.php",
-            function (data)
-            {
-                for (let index = 0; index < data.length; index++) {
-
-                    var chartdata = { 
-                        labels: name,
-                        datasets: [
-                            {
-                                label: data[index].id1,
-                                backgroundColor: '#49e2ff',
-                                borderColor: '#46d5f1',
-                                hoverBackgroundColor: '#CCCCCC',
-                                hoverBorderColor: '#666666',
-                                data: data[index].count1
-                            },
-                            {
-                                label: data[index].id2,
-                                backgroundColor: '#49e2ff',
-                                borderColor: '#46d5f1',
-                                hoverBackgroundColor: '#CCCCCC',
-                                hoverBorderColor: '#666666',
-                                data: data[index].count2
-                            },
-                            {
-                                label: data[index].id3,
-                                backgroundColor: '#49e2ff',
-                                borderColor: '#46d5f1',
-                                hoverBackgroundColor: '#CCCCCC',
-                                hoverBorderColor: '#666666',
-                                data: data[index].count3
-                            },
-                            {
-                                label: data[index].id4,
-                                backgroundColor: '#49e2ff',
-                                borderColor: '#46d5f1',
-                                hoverBackgroundColor: '#CCCCCC',
-                                hoverBorderColor: '#666666',
-                                data: data[index].count4
-                            },
-                            {
-                                label: data[index].id5,
-                                backgroundColor: '#49e2ff',
-                                borderColor: '#46d5f1',
-                                hoverBackgroundColor: '#CCCCCC',
-                                hoverBorderColor: '#666666',
-                                data: data[index].count5
-                            },
-                            {
-                                label: data[index].id6,
-                                backgroundColor: '#49e2ff',
-                                borderColor: '#46d5f1',
-                                hoverBackgroundColor: '#CCCCCC',
-                                hoverBorderColor: '#666666',
-                                data: data[index].count6
-                            },
-                            {
-                                label: data[index].id7,
-                                backgroundColor: '#49e2ff',
-                                borderColor: '#46d5f1',
-                                hoverBackgroundColor: '#CCCCCC',
-                                hoverBorderColor: '#666666',
-                                data: data[index].count7
-                            },
-                            {
-                                label: data[index].id8,
-                                backgroundColor: '#49e2ff',
-                                borderColor: '#46d5f1',
-                                hoverBackgroundColor: '#CCCCCC',
-                                hoverBorderColor: '#666666',
-                                data: data[index].count8
-                            },
-                            {
-                                label: data[index].id9,
-                                backgroundColor: '#49e2ff',
-                                borderColor: '#46d5f1',
-                                hoverBackgroundColor: '#CCCCCC',
-                                hoverBorderColor: '#666666',
-                                data: data[index].count9
-                            },
-                            {
-                                label: data[index].id10,
-                                backgroundColor: '#49e2ff',
-                                borderColor: '#46d5f1',
-                                hoverBackgroundColor: '#CCCCCC',
-                                hoverBorderColor: '#666666',
-                                data: data[index].count10
-                            }
-                        ]
-                    };
-                    var graphTarget = $("#graphCanvas" + index);
-                    var barGraph = new Chart(graphTarget, {
-                        type: 'bar',
-                        data: chartdata,
-                        options: {
-                                title: {
-                                    display: true,
-                                    text: data[index].datetime
-                                }
-                        }
-                    });
-                }
-            });
-        }
-        
-
-</script>
 
 </body>
 </html>

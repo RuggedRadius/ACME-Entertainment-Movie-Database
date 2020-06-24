@@ -1,0 +1,43 @@
+CHECK DUPLICATES
+==================
+
+SELECT 
+    ID,
+	Title,
+    COUNT(Title)
+FROM
+    moviesdb
+GROUP BY Title
+HAVING COUNT(Title) > 1;
+
+
+
+
+
+FILTER ANY 's IN THE DATABASE
+=============================
+
+SELECT * 
+FROM `moviesdb` 
+WHERE Title LIKE "%'%";
+
+
+
+
+
+
+NO GENRE
+=============================
+
+SELECT * 
+FROM `moviesdb` 
+WHERE Genre = '';
+
+
+
+NO OVERVIEW
+=============================
+
+SELECT * 
+FROM `moviesdb` 
+WHERE overview = '';

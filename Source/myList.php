@@ -38,7 +38,7 @@ require "./php/fetch.php";
 $qry = "SELECT * FROM `myList`";
 outputPopular($qry);
 ?>
-<script type="text/javascript" src="./js/fetchImage.js"></script>
+<!-- <script type="text/javascript" src="./js/fetchImage.js"></script> -->
 
 </body>
 </html>

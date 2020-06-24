@@ -78,36 +78,15 @@ function outputMovieDetails($qry)
         // Output video trailer iframe
         echo '<div id="bg-img"><iframe src="'.$videoURL.'?autoplay=1" frameborder="0" allowfullscreen allow="autoplay"></iframe></div>'; // https://www.youtube.com/embed/'.$ytCode.'?autoplay=1"
 
-
-
-        // // Poster Element
-        // echo "<div class='movie-details-poster'>";
-        // echo "<image class='movie-poster-large' width='20%'></image>";
-        // echo "</div>";
-
-
-
-
-
-
-
-
         // Movie detail panels
         echo '<div id="panel-wrapper">';
 
-
-
-
-
-
-
-        
         // Movie Description/Overview
         echo "<div class='movie-details' id='".$row["Title"]."'>";
 
         // Poster Element
         // echo "<div class='movie-details-poster'>";
-        echo "<image class='movie-poster-large' width='20%'></image>";
+        echo "<image class='movie-poster-large' src='./posters/".$row["ID"].".jpg' width='20%' alt='".$row["Title"]."'></image>";
         // echo "</div>";
 
 
@@ -136,59 +115,21 @@ function outputMovieDetails($qry)
 
 
         echo "<h3>Overview</h3>
-                <p id='movie-overview'></p><br>";
+                <p id='movie-overview'>".$row['overview']."</p><br>";
         
-        // Details table
-        echo "
-            <h3>Details</h3>
-            <table id='table-movie-details'>
-                <col width='200'>
-                <col width='300'>
-                <col width='200'>
-                <col width='300'>
-            <tr>
-            <td class='td-label'>Genre</td><td>".$row["Genre"]."</td>
-            <td class='td-label'>Year</td><td>".$row["Year"]."</td>
-            </tr>
-            <tr>
-            <td class='td-label'>Studio</td><td>".$row["Studio"]."</td>
-            <td class='td-label'>Status</td><td>".$row["Status"]."</td>
-            </tr>
-            <tr>
-            <td class='td-label'>RRP</td><td>$".$row["RecRetPrice"]."</td>
-            <td class='td-label'>Rating</td><td>".$row["Rating"]."</td>
-            </tr>
-            <tr>
-            <td class='td-label'>Versions</td><td>".$row["Versions"]."</td>
-            <td class='td-label'>Aspect</td><td>".$row["Aspect"]."</td>
-            </tr>
-            <tr>
-            <td class='td-label'>Sound</td><td>".$row["Sound"]."</td>
-            <td class='td-label'>Popularity</td><td>".$row["SearchCount"]."</td>
-            </tr>
-            </table><br>
-            ";
 
-
-        // Edit buttons (TEMP!!)
-        // echo "
-        // <div id='edit-btns'>
-        // <div class='btn-edit'>
-        // <a href='./modifyMovie.php?id=" . $row["ID"] . "&download=true' id='auto-update'><i class='fa fa-download'></i></a>
-        // </div>
-        // <div class='btn-edit'>
-        // <a href='./modifyMovie.php?id=" . $row["ID"] . "&download=true&auto=true'><i class='fa fa-forward'></i></a>
-        // </div>
-        // <div class='btn-edit'>
-        // <a href='./modifyMovie.php?id=" . $row["ID"] . "&delete=true'><i class='fa fa-trash'></i></a>
-        // </div>
-        // </div>";
-
-
-
-
-
-
+        echo "<div id='movie-data' style='display: flex; flex-wrap: wrap;'>";
+        outputInfoTag("Genre", $row["Genre"]);
+        outputInfoTag("Year", $row["Year"]);
+        outputInfoTag("Studio", $row["Studio"]);
+        outputInfoTag("Status", $row["Status"]);
+        outputInfoTag("RRP", $row["RecRetPrice"]);
+        outputInfoTag("Rating", $row["Rating"]);
+        outputInfoTag("Popularity", $row["SearchCount"]);
+        outputInfoTag("Versions", $row["Versions"]);
+        outputInfoTag("Aspect", $row["Aspect"]);
+        outputInfoTag("Sound", $row["Sound"]);
+        echo "</div>";
         echo "</div>";
 
         $newSearchCount = $row["SearchCount"] + 1;
@@ -198,6 +139,20 @@ function outputMovieDetails($qry)
 
     // Close container div
     echo "</div></div>";
+}
+
+function outputInfoTag($label, $data)
+{
+    echo "
+    <div style='display: inline; border: 2px solid white; margin: 10px; padding: 20px;'>                
+        <p style='color: white; font-size: 150%;'>
+            ".$label."
+        </p>
+        <p style='color: gray; font-size: 120%;'>
+            ".$data."
+        </p>
+    </div>
+    ";
 }
 
 /**
@@ -232,7 +187,7 @@ function outputPopular($qry)
             // Output movie box display
             echo "<a href='./movie.php?id=".$row["ID"]."' id='".$row["ID"]."'>";
             echo "<div class='movie-display' id='".$row["Title"]."'>";
-            echo "<image class='movie-poster' src='' width='100px'></image>";
+            echo "<image class='movie-poster' src='./posters/".$row["ID"].".jpg' width='100px' alt='".$row["Title"]."'></image>";
             echo "<h1 class='title'>" . $row["Title"] . "</h1>";
             // echo "<p>".$row["Genre"]."</p>";
             echo "</div>";
@@ -351,7 +306,7 @@ function outputCollectionPanel($collectionTitle, $keywords)
         echo "  
             <a href='./movie.php?id=".$row["ID"]."' id='".$row["ID"]."'>
                 <div class='discover-display' id='".$row["Title"]."'>
-                    <image class='movie-poster' src='' width='100px'></image>
+                    <image class='movie-poster' src='./thumbnails/".$row["ID"].".jpg' width='100px' alt='".$row["Title"]."'></image>
                 </div>
             </a>";
     }
@@ -380,7 +335,7 @@ function outputDecadePanel($collectionTitle, $decade)
         echo "  
             <a href='./movie.php?id=".$row["ID"]."' id='".$row["ID"]."'>
                 <div class='discover-display' id='".$row["Title"]."'>
-                    <image class='movie-poster' src='' width='100px'></image>
+                    <image class='movie-poster' src='./thumbnails/".$row["ID"].".jpg' width='100px' alt='".$row["Title"]."'></image>
                 </div>
             </a>";
     }
@@ -404,7 +359,7 @@ function generateImagePanel($genre)
         echo "  
             <a href='./movie.php?id=".$row["ID"]."' id='".$row["ID"]."'>
                 <div class='discover-display' id='".$row["Title"]."'>
-                    <image class='movie-poster' src='' width='100px'></image>
+                    <image class='movie-poster' src='./thumbnails/".$row["ID"].".jpg' width='100px' alt='".$row["Title"]."'></image>
                 </div>
             </a>";
     }

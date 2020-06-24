@@ -66,7 +66,7 @@ while ($row = $result->fetch_assoc()) {
 
 
 <!-- Scripts -->
-<script type="text/javascript" src="./js/fetchImage.js"></script>
+<!-- <script type="text/javascript" src="./js/fetchImage.js"></script> -->
 <script type="text/javascript" src="./js/nav.js"></script>
 </body>
 </html>

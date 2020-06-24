@@ -88,7 +88,6 @@ if (!$arraysAreEqual) {
 <body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-<script src="./js/Chart.BarFunnel.js"></script>
 
 <div class="side-title"><p>Top 10</p></div>
 
@@ -184,7 +183,7 @@ foreach ($currentIDs as $value) {
             echo "
             <a href='./movie.php?id=".$row2["ID"]."' id='".$row2["ID"]."'>
                 <div class='movie-display-top10' id='".$row2["Title"]."'>
-                <image class='movie-poster-top10' style=''>";
+                <image class='movie-poster-top10' style='' src='./posters/".$row2["ID"].".jpg' alt='".$row2["Title"]."'>";
                         
             if ($rowCounter === 10) {
                 echo "<p class='popular-label-top10' id='".$rowCounter."' style='left: -20vw;'>" . $rowCounter . "</p>";
@@ -199,7 +198,7 @@ foreach ($currentIDs as $value) {
             echo "
             <a href='./movie.php?id=".$row2["ID"]."' id='".$row2["ID"]."' top10pos='1'>
                 <div class='movie-display-top10' id='".$row2["Title"]."'>
-                    <image class='movie-poster-top10' style=''>";
+                    <image class='movie-poster-top10' style=''  src='./posters/".$row2["ID"].".jpg' alt='".$row2["Title"]."'>";
                         
             if ($rowCounter === 10) {
                 echo "<p class='popular-label-top10' id='".$rowCounter."' style='left: -17.5vw;'>" . $rowCounter . "</p>";
@@ -214,7 +213,7 @@ foreach ($currentIDs as $value) {
             echo "
             <a href='./movie.php?id=".$row2["ID"]."' id='".$row2["ID"]."'>
                 <div class='movie-display-top10' id='".$row2["Title"]."'>
-                <image class='movie-poster-top10' style=''>";
+                <image class='movie-poster-top10' style='' src='./posters/".$row2["ID"].".jpg' alt='".$row2["Title"]."'>";
                         
             if ($rowCounter === 10) {
                 echo "<p class='popular-label-top10' id='".$rowCounter."' style='left: -17.5vw;'>" . $rowCounter . "</p>";
@@ -230,10 +229,15 @@ foreach ($currentIDs as $value) {
         echo "
         <a href='./movie.php?id=".$row2["ID"]."' id='".$row2["ID"]."'>
             <div class='movie-display-top10' id='".$row2["Title"]."'>
-                <image class='movie-poster-top10'>
-                    <p class='popular-label-top10'>" . $rowCounter . "</p>
-                </image>
-                ";
+                <image class='movie-poster-top10' src='./posters/".$row2["ID"].".jpg' alt='".$row2["Title"]."'>";
+                
+        if ($rowCounter === 10) {
+            echo "<p class='popular-label-top10' style='z-index: -1; left: -18vw;'>" . $rowCounter . "</p>";
+        } else {
+            echo "<p class='popular-label-top10' style='z-index: -1;'>" . $rowCounter . "</p>";
+        }
+
+        echo "</image>";
         echo "<h1 class='title-movement' style='color: purple; animation: glow 2s linear infinite;'>" . $previousPosition . "</h1>";
         echo "</div></a>";
     }
@@ -414,6 +418,6 @@ echo "</div>";
 
 
 
-<script type="text/javascript" src="./js/fetchImage.js"></script>
+<!-- <script type="text/javascript" src="./js/fetchImage.js"></script> -->
 </body>
 </html>

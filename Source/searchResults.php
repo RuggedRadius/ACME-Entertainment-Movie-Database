@@ -47,6 +47,6 @@ $qry = "SELECT * FROM `moviesdb` WHERE `title` LIKE '%{$Title}%' AND `genre` LIK
 outputPopular($qry);
 ?>
 
-<script type="text/javascript" src="./js/fetchImage.js"></script>
+<!-- <script type="text/javascript" src="./js/fetchImage.js"></script> -->
 </body>
 </html>

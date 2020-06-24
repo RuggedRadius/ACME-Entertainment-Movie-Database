@@ -61,7 +61,7 @@ outputDecadePanel("10's", "201");
 <!-- Close Page Wrapper -->
 </div>
 <!-- Scripts -->
-<script type="text/javascript" src="./js/fetchImage.js"></script>
+<!-- <script type="text/javascript" src="./js/fetchImage.js"></script> -->
 <script type="text/javascript" src="./js/nav.js"></script>
 </body>
 </html>

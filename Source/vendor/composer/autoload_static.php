@@ -18,6 +18,10 @@ class ComposerStaticInitcaf7548495664fdf8e03a057f020cec9
         array (
             'phpseclib\\' => 10,
         ),
+        'b' => 
+        array (
+            'buibr\\tmdbapi\\' => 14,
+        ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
@@ -46,6 +50,10 @@ class ComposerStaticInitcaf7548495664fdf8e03a057f020cec9
         'phpseclib\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
+        ),
+        'buibr\\tmdbapi\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/',
         ),
         'Psr\\Log\\' => 
         array (
