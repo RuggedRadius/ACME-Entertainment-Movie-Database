@@ -298,8 +298,7 @@ function outputCollectionPanel($collectionTitle, $keywords)
     include "connection.php";
     echo '<!-- Discover Panel -->
             <div class="discover-panel">
-                <span>'.$collectionTitle.'</span>
-                <div class="discover-img-panel">';
+            <span class="genre-label-link">'.$collectionTitle.'</span>                <div class="discover-img-panel">';
     $collectionQuery = "SELECT * FROM `moviesdb` WHERE `title` LIKE '%{$keywords}%' LIMIT 12";
     $result = mysqli_query($dbConnection, $collectionQuery);
     while ($row = $result->fetch_assoc()) {
@@ -327,7 +326,7 @@ function outputDecadePanel($collectionTitle, $decade)
     include "connection.php";
     echo '<!-- Discover Panel -->
             <div class="discover-panel">
-                <span>'.$collectionTitle.'</span>
+                <span class="genre-label-link">'.$collectionTitle.'</span>
                 <div class="discover-img-panel">';
     $collectionQuery = "SELECT * FROM `moviesdb` WHERE `year` LIKE '".$decade."%' ORDER BY RAND() DESC LIMIT 12";
     $result = mysqli_query($dbConnection, $collectionQuery);
@@ -365,6 +364,35 @@ function generateImagePanel($genre)
     }
 }
 
+function generateGenreContent($genre)
+{
+    include "./php/connection.php";
+
+    $qry = "SELECT * FROM `moviesdb` WHERE `Genre`= '" . $genre . "'";
+    $result = mysqli_query($dbConnection, $qry);
+
+    while ($row = $result->fetch_assoc()) {
+        echo "  
+            <a href='./movie.php?id=".$row["ID"]."' id='".$row["ID"]."'>
+                    <image class='movie-poster' src='./thumbnails/".$row["ID"].".jpg' width='100px' alt='".$row["Title"]."'></image>
+            </a>";
+    }
+}
+
+function generateSearchResults($qry)
+{
+    include "./php/connection.php";
+
+    $result = mysqli_query($dbConnection, $qry);
+
+    while ($row = $result->fetch_assoc()) {
+        echo "  
+            <a href='./movie.php?id=".$row["ID"]."' id='".$row["ID"]."'>
+                    <image class='movie-poster' src='./thumbnails/".$row["ID"].".jpg' width='100px' alt='".$row["Title"]."'></image>
+            </a>";
+    }
+}
+
 /**
  * Generates a discover panel of titles for given genre.
  *
@@ -374,12 +402,22 @@ function generateImagePanel($genre)
  */
 function generatePanel($genre)
 {
+    // Open discover panel
     echo '
-            <!-- Discover Panel -->
-            <div class="discover-panel">
-                <span>'.$genre.'</span>
-                <div class="discover-img-panel">';
+    <!-- Discover Panel -->
+    <div class="discover-panel">
+        <a href="./genre.php?genre='.$genre.'" class="genre-label-link">
+        '.$genre.'
+        </a>
+        <div class="discover-img-panel">
+    ';
+
+    // Populate content
     GenerateImagePanel($genre);
-    echo '</div>
-            </div>';
+
+    // Close discover panel
+    echo '
+        </div>
+    </div>
+    ';
 }

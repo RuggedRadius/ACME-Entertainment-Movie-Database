@@ -22,6 +22,11 @@
     font-family: 'Cinzel Decorative', cursive;
 }
 
+#logo a:hover {
+    animation: focus 0.75s linear forwards;
+    animation-iteration-count: 1;
+}
+
 #logo
 {
     position: fixed;
@@ -32,8 +37,8 @@
     font-size: 3.5rem;
     margin-right: 20px;
     z-index: 500;
-
 }
+
 
 #logout:hover {
     transition-duration: 0.25s;
@@ -53,19 +58,16 @@
     z-index: 1500;
 
     margin: 20px;
+    padding: 5px;
     cursor: pointer;
 }
 
 #nav-links:hover
 {
-    /* color: black; */
-    /* fill: black; */
-    background: white;
-
     transition-duration: 0.25s;
-
-    box-shadow: 0px 0px 50px 50px;
-    border-radius: 50%;
+    color: rgb(69, 173 , 170);
+    fill: rgb(69, 173 , 170);
+    box-shadow: 0px 0px 5px 5px;
 }
 
 #nav-links i
@@ -88,12 +90,6 @@
 
 }
 
-#nav-links a:hover
-{
-    transition-duration: 0.25s;
-    color: rgb(69, 173 , 170);
-    text-shadow: 0px 0px 20px white;
-}
 
 #navMenu
 {
@@ -118,28 +114,33 @@
 }
 
 #navMenu a:hover {
-    color: rgb(69, 173 , 170);
+
+    
+
+    text-shadow: 0px 0px 10px white;
+    letter-spacing: 20px;
     transition-duration: 0.25s;
-    /* text-shadow: 0px 10px 10px white; */
-    animation: focus 0.5s linear forwards;
-    animation-iteration-count: 1;
+    margin-left: 20px;
+    color: rgb(1, 219, 219);
 }
+
+
 
 @keyframes focus {
     0% {
-        text-shadow: 10px 10px 10px black;
+        text-shadow: 5px 5px 5px black;
     }
     25% {
-        text-shadow: 10px -10px 10px gray;
+        text-shadow: 5px -5px 5px gray;
     }
     50% {
-        text-shadow: -10px -10px 10px white;
+        text-shadow: -5px -5px 5px white;
     }
     75% {
-        text-shadow: -10px 10px 10px gray;
+        text-shadow: -5px 5px 5px gray;
     }
     100% {
-        text-shadow: 0px 0px 10px white;
+        text-shadow: 0px 0px 5px white;
     }
 }
 
