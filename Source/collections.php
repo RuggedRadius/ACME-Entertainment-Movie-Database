@@ -44,9 +44,6 @@ outputCollectionPanel("Christmas", "christmas");
 outputCollectionPanel("Star Trek", "star trek");
 outputCollectionPanel("Star Wars", "star wars");
 outputCollectionPanel("Harry Potter", "Harry Potter");
-// outputCollectionPanel("The Matrix", "matrix");
-// outputCollectionPanel("Superman", "superman");
-// outputCollectionPanel("Lord of the Rings", "lord of the rings");
 outputDecadePanel("60's", "196");
 outputDecadePanel("70's", "197");
 outputDecadePanel("80's", "198");
@@ -54,8 +51,6 @@ outputDecadePanel("90's", "199");
 outputDecadePanel("00's", "200");
 outputDecadePanel("10's", "201");
 ?>
-
-
 <!-- Close Discovery Wrapper -->
 </div>
 <!-- Close Page Wrapper -->
