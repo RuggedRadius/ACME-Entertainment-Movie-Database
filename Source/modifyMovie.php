@@ -98,6 +98,7 @@ if (isset($_GET["download"])) {
 
         //Download image to local storage
         // sleep(5);
+        // echo "<script>alert('Downloading movie poster...');</script>";
         DownloadMoviePoster($movieTitle, $movieID);
         // echo "<script>alert('".$movieTitle."');</script>";
     }
