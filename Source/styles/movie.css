@@ -96,13 +96,14 @@
     height: auto;
     z-index: 15;
 
-    background: black;
-    opacity: 0.8;
+    background: rgba(0, 0, 0, 0.8);
+    /* opacity: 0.8; */
     border-radius: 50px;
     box-shadow: 0px 0px 50px black;
     border: 2px solid white;
     border-radius: 20px;
 
+    font-size: 200%;
 
     /* 3D Rotate */
     perspective: 1200px;
@@ -360,8 +361,4 @@ td {
 {
     margin: 0px 20px;
     white-space: nowrap;
-}
-
-.movie-details {
-    font-size: 200%;
 }
